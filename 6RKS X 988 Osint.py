@@ -23,7 +23,7 @@ print(f'{Fore.RED}           ╔════════════════
 print(f'{Fore.RED}           ║   [1] Enter Name Info    ║')
 print(f'{Fore.RED}           ║   [2] Enter Phone Number ║')
 print(f'{Fore.RED}           ║   [3] Enter Address Info ║')
-print(f'{Fore.RED}           ║   [4] Enter IP Info      ║')
+print(f'{Fore.RED}           ║   [4] Enter Email Info   ║')
 print(f'{Fore.RED}           ╚══════════════════════════╝\n')
 
 menu = input(f'{Fore.YELLOW}[?] Select an option > {Fore.RESET}')
