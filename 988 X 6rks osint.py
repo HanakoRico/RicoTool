@@ -24,7 +24,7 @@ print(f'{Fore.BLUE}           ║   [2] Enter Phone Number ║')
 print(f'{Fore.BLUE}           ║   [3] Enter Address Info ║')
 print(f'{Fore.MAGENTA}           ║   [4] Enter IP Info      ║')
 print(f'{Fore.MAGENTA}           ║   [5] Enter Email Info   ║')
-print(f'{Fore.MAGENTA}           ╚══════════════════════════╝\n')
+print(f'{Fore.MAGENTA}           ╚══════════════════════════╝{Style.RESET_ALL}\n')
 
 menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}')
 
