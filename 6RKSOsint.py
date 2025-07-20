@@ -24,7 +24,7 @@ print(f'{Fore.RED}           ║   [3] Enter Address Info ║')
 print(f'{Fore.RED}           ║   [4] Enter IP Info      ║')
 print(f'{Fore.RED}           ╚══════════════════════════╝\n')
 
-menu = input(f'{Fore.CYAN}[?] Select an option > {Fore.RESET}')
+menu = input(f'{Fore.YELLOW}[?] Select an option > {Fore.RESET}')
 
 if menu == "1":
     firstname = input("First name: ")
