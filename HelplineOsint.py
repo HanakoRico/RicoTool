@@ -7,7 +7,7 @@ init(autoreset=True)
 os.system('cls' if os.name == 'nt' else 'clear')
 
 print(f'''
-{Fore.CYAN}
+{Fore.MAGENTA}
 ██╗░░██╗███████╗██╗░░░░░██████╗░██╗░░░░░██╗███╗░░██╗███████╗
 ██║░░██║██╔════╝██║░░░░░██╔══██╗██║░░░░░██║████╗░██║██╔════╝
 ███████║█████╗░░██║░░░░░██████╔╝██║░░░░░██║██╔██╗██║█████╗░░
@@ -16,14 +16,14 @@ print(f'''
 ╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░░░░╚══════╝╚═╝╚═╝░░╚══╝╚══════╝
 ''')
 
-print(f'{Fore.RED}           ╔══════════════════════════╗')
-print(f'{Fore.RED}           ║   [1] Enter Name Info    ║')
-print(f'{Fore.RED}           ║   [2] Enter Phone Number ║')
-print(f'{Fore.RED}           ║   [3] Enter Address Info ║')
-print(f'{Fore.RED}           ║   [4] Enter IP Info      ║')
-print(f'{Fore.RED}           ╚══════════════════════════╝\n')
+print(f'{Fore.MAGENTA}           ╔══════════════════════════╗')
+print(f'{Fore.MAGENTA}           ║   [1] Enter Name Info    ║')
+print(f'{Fore.MAGENTA}           ║   [2] Enter Phone Number ║')
+print(f'{Fore.MAGENTA}           ║   [3] Enter Address Info ║')
+print(f'{Fore.MAGENTA}           ║   [4] Enter IP Info      ║')
+print(f'{Fore.MAGENTA}           ╚══════════════════════════╝\n')
 
-menu = input(f'{Fore.RED}[?] Select an option > {Fore.RESET}')
+menu = input(f'{Fore.CYAN}[?] Select an option > {Fore.RESET}')
 
 if menu == "1":
     firstname = input("First name: ")
