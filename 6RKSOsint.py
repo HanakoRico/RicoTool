@@ -16,6 +16,7 @@ print(f'''
 ░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
 {Fore.RESET}
 ''')
+print(" Made By Hanako ")
 
 print(f'{Fore.RED}           ╔══════════════════════════╗')
 print(f'{Fore.RED}           ║   [1] Enter Name Info    ║')
