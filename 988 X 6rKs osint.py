@@ -25,6 +25,7 @@ print(f'{Fore.BLUE}           ║   [3] Enter Address Info ║')
 print(f'{Fore.MAGENTA}           ║   [4] Enter IP Info      ║')
 print(f'{Fore.MAGENTA}           ║   [5] Enter Email Info   ║')
 print(f'{Fore.MAGENTA}           ╚══════════════════════════╝\n')
+print(" 1 and 3 will redirect you to the website")
 
 menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}')
 
