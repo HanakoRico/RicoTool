@@ -41,7 +41,7 @@ elif menu == "2":
     part1 = input("First 3 digits: ")
     part2 = input("Next 3 digits: ")
     part3 = input("Last 4 digits: ")
-    url = fhttps://www.beenverified.com/reverse-phone/{part1}-{part2}-{part3}"
+    url = f"https://www.beenverified.com/reverse-phone/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
@@ -50,7 +50,7 @@ elif menu == "3":
     street = input("Street: ")
     city = input("City: ")
     state = input("State: ")
-    url = f"https://www.beenverified.com/?utm_querytype=nonbrand{house}-{street}_{city}-{state}"
+    url = f"https://www.beenverified.com/reverse-address-lookup/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
@@ -62,7 +62,7 @@ elif menu == "4":
 
 elif menu == "5":
     ip = input("Email ")
-    url = f"https://www.beenverified.com/email-search/?utm_source=brave&utm_medium=cpc&utm_campaign=BV_EMA_SEA_BRD_BDT_Brave_Search_Email_Address&utm_querytype=nonbrand"
+    url = f"https://www.beenverified.com/email-search/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
