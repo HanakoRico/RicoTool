@@ -1,28 +1,29 @@
 import os
 import webbrowser
-from colorama import Fore, Back, Style, init
+from colorama import Fore, init
 
 init(autoreset=True)
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
 print(f'''
-{Fore.MAGENTA}{Style.BRIGHT}██╗  ██╗ █████╗ ██╗     ██████╗ ██╗     ███████╗
-{Fore.BLUE}{Style.BRIGHT}██║  ██║██╔══██╗██║     ██╔══██╗██║     ██╔════╝
-{Fore.MAGENTA}{Style.BRIGHT}███████║███████║██║     ██████╔╝██║     █████╗  
-{Fore.BLUE}{Style.BRIGHT}██╔══██║██╔══██║██║     ██╔═══╝ ██║     ██╔══╝  
-{Fore.MAGENTA}{Style.BRIGHT}██║  ██║██║  ██║███████╗██║     ███████╗███████╗
-{Fore.BLUE}{Style.BRIGHT}╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝     ╚══════╝╚══════╝
+{Fore.RED}
+██╗░░██╗███████╗██╗░░░░░██████╗░██╗░░░░░██╗███╗░░██╗███████╗
+██║░░██║██╔════╝██║░░░░░██╔══██╗██║░░░░░██║████╗░██║██╔════╝
+███████║█████╗░░██║░░░░░██████╔╝██║░░░░░██║██╔██╗██║█████╗░░
+██╔══██║██╔══╝░░██║░░░░░██╔═══╝░██║░░░░░██║██║╚████║██╔══╝░░
+██║░░██║███████╗███████╗██║░░░░░███████╗██║██║░╚███║███████╗
+╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░░░░╚══════╝╚═╝╚═╝░░╚══╝╚══════╝
 ''')
 
-print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ╔══════════════════════════╗  ")
-print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [1] Enter Name Info    ║  ")
-print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [2] Enter Phone Number ║  ")
-print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [3] Enter Address Info ║  ")
-print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [4] Enter IP Info      ║  ")
-print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ╚══════════════════════════╝  \n")
+print(f'{Fore.RED}           ╔══════════════════════════╗')
+print(f'{Fore.RED}           ║   [1] Enter Name Info    ║')
+print(f'{Fore.RED}           ║   [2] Enter Phone Number ║')
+print(f'{Fore.RED}           ║   [3] Enter Address Info ║')
+print(f'{Fore.RED}           ║   [4] Enter IP Info      ║')
+print(f'{Fore.RED}           ╚══════════════════════════╝\n')
 
-menu = input(f"{Fore.CYAN}{Style.BRIGHT}[?] Select an option > {Fore.RESET}")
+menu = input(f'{Fore.RED}[?] Select an option > {Fore.RESET}')
 
 if menu == "1":
     firstname = input("First name: ")
@@ -57,3 +58,5 @@ elif menu == "4":
 
 else:
     print(f"{Fore.RED}[!] Invalid selection.")
+
+input("\nPress Enter to exit...")
