@@ -7,7 +7,7 @@ init(autoreset=True)
 os.system('cls' if os.name == 'nt' else 'clear')
 
 print(f'''
-{Fore.RED}
+{Fore.MAGENTA}
 
 ░█████╗░░█████╗░░█████╗░  ██╗░░██╗  ░█████╗░██████╗░██╗░░██╗░██████╗
 ██╔══██╗██╔══██╗██╔══██╗  ╚██╗██╔╝  ██╔═══╝░██╔══██╗██║░██╔╝██╔════╝
@@ -15,17 +15,16 @@ print(f'''
 ░╚═══██║██╔══██╗██╔══██╗  ░██╔██╗░  ██╔══██╗██╔══██╗██╔═██╗░░╚═══██╗
 ░█████╔╝╚█████╔╝╚█████╔╝  ██╔╝╚██╗  ╚█████╔╝██║░░██║██║░╚██╗██████╔╝
 ░╚════╝░░╚════╝░░╚════╝░  ╚═╝░░╚═╝  ░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
-{Fore.RESET}
 ''')
 print(" Made By Hanako ")
 
-print(f'{Fore.RED}           ╔══════════════════════════╗')
-print(f'{Fore.RED}           ║   [1] Enter Name Info    ║')
-print(f'{Fore.RED}           ║   [2] Enter Phone Number ║')
-print(f'{Fore.RED}           ║   [3] Enter Address Info ║')
-print(f'{Fore.RED}           ║   [4] Enter IP Info      ║')
-print(f'{Fore.RED}           ║   [5] Enter Email Info   ║')
-print(f'{Fore.RED}           ╚══════════════════════════╝\n')
+print(f'{Fore.CYAN}           ╔══════════════════════════╗')
+print(f'{Fore.MAGENTA}           ║   [1] Enter Name Info    ║')
+print(f'{Fore.CYAN}           ║   [2] Enter Phone Number ║')
+print(f'{Fore.MAGENTA}           ║   [3] Enter Address Info ║')
+print(f'{Fore.CYAN}           ║   [4] Enter IP Info      ║')
+print(f'{Fore.MAGENTA}           ║   [5] Enter Email Info   ║')
+print(f'{Fore.CYAN}           ╚══════════════════════════╝\n')
 
 menu = input(f'{Fore.YELLOW}[?] Select an option > {Fore.RESET}')
 
