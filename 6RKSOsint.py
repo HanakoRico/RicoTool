@@ -31,7 +31,7 @@ if menu == "1":
     firstname = input("First name: ")
     lastname = input("Last name: ")
     location = input("City/State/Zip: ")
-    url = f"https://example.com/name/{firstname}-{lastname}_{location}"
+    url = f"https://www.beenverified.com/?utm_source=brave&utm_medium=cpc&utm_campaign=BV_PPL_SEA_PRP_PPS_Brave_Peace_Of_Mind&utm_querytype=nonbrand{firstname}-{lastname}_{location}"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
@@ -39,7 +39,7 @@ elif menu == "2":
     part1 = input("First 3 digits: ")
     part2 = input("Next 3 digits: ")
     part3 = input("Last 4 digits: ")
-    url = f"https://example.com/phone/{part1}-{part2}-{part3}"
+    url = f"https://www.beenverified.com/?utm_source=brave&utm_medium=cpc&utm_campaign=BV_PPL_SEA_PRP_PPS_Brave_Peace_Of_Mind&utm_querytype=nonbrand{part1}-{part2}-{part3}"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
@@ -48,13 +48,13 @@ elif menu == "3":
     street = input("Street: ")
     city = input("City: ")
     state = input("State: ")
-    url = f"https://example.com/address/{house}-{street}_{city}-{state}"
+    url = f"https://www.beenverified.com/?utm_querytype=nonbrand{house}-{street}_{city}-{state}"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
 elif menu == "4":
-    ip = input("IP address: ")
-    url = f"https://example.com/ip/{ip}"
+    ip = input("Email ")
+    url = f"https://www.beenverified.com/?utm_querytype=nonbrand"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
