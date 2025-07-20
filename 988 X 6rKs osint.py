@@ -5,6 +5,7 @@ import threading
 import requests
 import webbrowser
 import base64
+import shutil
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -58,8 +59,27 @@ EMAIL_API_KEY_ENC = "YWIxNTNkY2Q0OWI1NTExYjVkYWI3YjE2YzdjMmE4YzA="    # example 
 phone_api_key = decrypt_key(PHONE_API_KEY_ENC)
 email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
 
-# Banner
-print(f'''
+def center_text(text):
+    """Return text padded with spaces to be centered horizontally."""
+    columns = shutil.get_terminal_size().columns
+    lines = text.split('\n')
+    centered_lines = []
+    for line in lines:
+        line_stripped = line.strip('\n')
+        padding = max((columns - len(line_stripped)) // 2, 0)
+        centered_lines.append(' ' * padding + line_stripped)
+    return '\n'.join(centered_lines)
+
+def vertical_center_print(text):
+    """Print text vertically and horizontally centered."""
+    size = shutil.get_terminal_size()
+    total_lines = text.count('\n') + 1
+    vertical_padding = max((size.lines - total_lines) // 2, 0)
+    print('\n' * vertical_padding)
+    print(center_text(text))
+
+# Your banner text (without the extra leading/trailing newlines)
+banner = f'''
 {Fore.MAGENTA}
 ░█████╗░░█████╗░░█████╗░  ██╗░░██╗  ░█████╗░██████╗░██╗░░██╗░██████╗
 ██╔══██╗██╔══██╗██╔══██╗  ╚██╗██╔╝  ██╔═══╝░██╔══██╗██║░██╔╝██╔════╝
@@ -67,19 +87,24 @@ print(f'''
 ░╚═══██║██╔══██╗██╔══██╗  ░██╔██╗░  ██╔══██╗██╔══██╗██╔═██╗░░╚═══██╗
 ░█████╔╝╚█████╔╝╚█████╔╝  ██╔╝╚██╗  ╚█████╔╝██║░░██║██║░╚██╗██████╔╝
 ░╚════╝░░╚════╝░░╚════╝░  ╚═╝░░╚═╝  ░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
-''')
-print(" Made By Hanako ")
+'''
 
-print(f'{Fore.CYAN}           ╔══════════════════════════╗')
-print(f'{Fore.CYAN}           ║   [1] Enter Name Info    ║')
-print(f'{Fore.BLUE}           ║   [2] Enter Phone Number ║')
-print(f'{Fore.BLUE}           ║   [3] Enter Address Info ║')
-print(f'{Fore.MAGENTA}           ║   [4] Enter IP Info      ║')
-print(f'{Fore.MAGENTA}           ║   [5] Enter Email Info   ║')
-print(f'{Fore.MAGENTA}           ╚══════════════════════════╝\n')
-print(" 1 and 3 will redirect you to the website")
+menu = f'''
+{Fore.CYAN}           ╔══════════════════════════╗
+{Fore.CYAN}           ║   [1] Enter Name Info    ║
+{Fore.BLUE}           ║   [2] Enter Phone Number ║
+{Fore.BLUE}           ║   [3] Enter Address Info ║
+{Fore.MAGENTA}           ║   [4] Enter IP Info      ║
+{Fore.MAGENTA}           ║   [5] Enter Email Info   ║
+{Fore.MAGENTA}           ╚══════════════════════════╝
+'''
 
-menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}')
+vertical_center_print(banner)
+print(center_text("Made By Hanako\n"))
+vertical_center_print(menu)
+print(center_text("1 and 3 will redirect you to the website\n"))
+
+menu_choice = input(center_text(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}'))
 
 if menu == "1":
     firstname = input("First name: ").strip().replace(" ", "+")
