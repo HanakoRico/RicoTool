@@ -6,11 +6,12 @@ from colorama import Fore, init
 # Initialize colorama
 init(autoreset=True)
 
-# Clear screen
-os.system('cls' if os.name == 'nt' else 'clear')
+try:
+    # Clear screen
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-# Banner
-print(f'''
+    # Banner
+    print(f'''
 {Fore.MAGENTA}
 ░█████╗░░█████╗░░█████╗░  ██╗░░██╗  ░█████╗░██████╗░██╗░░██╗░██████╗
 ██╔══██╗██╔══██╗██╔══██╗  ╚██╗██╔╝  ██╔═══╝░██╔══██╗██║░██╔╝██╔════╝
@@ -19,90 +20,100 @@ print(f'''
 ░█████╔╝╚█████╔╝╚█████╔╝  ██╔╝╚██╗  ╚█████╔╝██║░░██║██║░╚██╗██████╔╝
 ░╚════╝░░╚════╝░░╚════╝░  ╚═╝░░╚═╝  ░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
 ''')
-print(" Made By Hanako ")
+    print(" Made By Hanako ")
 
-# Menu
-print(f'{Fore.CYAN}           ╔══════════════════════════╗')
-print(f'{Fore.CYAN}           ║   [1] Enter Name Info    ║')
-print(f'{Fore.BLUE}           ║   [2] Enter Phone Number ║')
-print(f'{Fore.BLUE}           ║   [3] Enter Address Info ║')
-print(f'{Fore.MAGENTA}           ║   [4] Enter IP Info      ║')
-print(f'{Fore.MAGENTA}           ║   [5] Enter Email Info   ║')
-print(f'{Fore.MAGENTA}           ╚══════════════════════════╝\n')
-print(" 1 and 3 will redirect you to the website")
+    # Menu
+    print(f'{Fore.CYAN}           ╔══════════════════════════╗')
+    print(f'{Fore.CYAN}           ║   [1] Enter Name Info    ║')
+    print(f'{Fore.BLUE}           ║   [2] Enter Phone Number ║')
+    print(f'{Fore.BLUE}           ║   [3] Enter Address Info ║')
+    print(f'{Fore.MAGENTA}           ║   [4] Enter IP Info      ║')
+    print(f'{Fore.MAGENTA}           ║   [5] Enter Email Info   ║')
+    print(f'{Fore.MAGENTA}           ╚══════════════════════════╝\n')
+    print(" 1 and 3 will redirect you to the website")
 
-menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}')
+    menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}').strip()
 
-# Name info → redirect
-if menu == "1":
-    url = f"https://www.beenverified.com/people/"
-    print(f"\nOpening: {url}")
-    webbrowser.open(url)
+    # [1] Name info (redirect)
+    if menu == "1":
+        firstname = input("First name: ").strip().replace(" ", "+")
+        lastname = input("Last name: ").strip().replace(" ", "+")
+        location = input("City/State/Zip: ").strip().replace(" ", "+")
+        query = f"{firstname}+{lastname}+{location}"
+        url = f"https://www.beenverified.com/people/{query}/"
+        print(f"\nOpening: {url}")
+        webbrowser.open(url)
 
-# Phone info
-elif menu == "2":
-    phone = input("Enter phone number (with country code): ").strip()
-    api_key = "06b6f2d35967239292125f2cc9a76d35"  # Replace with your actual key
-    url = f"http://apilayer.net/api/validate?access_key={api_key}&number={phone}"
-    try:
-        response = requests.get(url)
-        data = response.json()
-        if data.get("valid"):
-            print("\n--- Phone Info ---")
-            print(f"Country: {data.get('country_name')}")
-            print(f"Location: {data.get('location')}")
-            print(f"Carrier: {data.get('carrier')}")
-            print(f"Line Type: {data.get('line_type')}")
-        else:
-            print(f"{Fore.YELLOW}[!] Invalid phone number.")
-    except Exception as e:
-        print(f"{Fore.RED}Error retrieving phone info: {e}")
+    # [2] Phone number
+    elif menu == "2":
+        phone = input("Enter phone number (with country code): ").strip()
+        api_key = "06b6f2d35967239292125f2cc9a76d35"  # Replace with your actual API key
+        url = f"http://apilayer.net/api/validate?access_key={api_key}&number={phone}"
+        try:
+            response = requests.get(url)
+            data = response.json()
+            if data.get("valid"):
+                print("\n--- Phone Info ---")
+                print(f"Country: {data.get('country_name')}")
+                print(f"Location: {data.get('location')}")
+                print(f"Carrier: {data.get('carrier')}")
+                print(f"Line Type: {data.get('line_type')}")
+            else:
+                print(f"{Fore.YELLOW}[!] Invalid phone number.")
+        except Exception as e:
+            print(f"{Fore.RED}Error retrieving phone info: {e}")
 
-# Address info → redirect
-elif menu == "3":
-    url = f"https://www.beenverified.com/address-lookup/"
-    print(f"\nOpening: {url}")
-    webbrowser.open(url)
+    # [3] Address info (redirect)
+    elif menu == "3":
+        house = input("House number: ").strip().replace(" ", "+")
+        street = input("Street name: ").strip().replace(" ", "+")
+        city = input("City: ").strip().replace(" ", "+")
+        state = input("State abbreviation: ").strip().upper()
+        url = f"https://www.beenverified.com/address-lookup/{house}+{street}+{city}+{state}/"
+        print(f"\nOpening: {url}")
+        webbrowser.open(url)
 
-# IP info
-elif menu == "4":
-    ip = input("Enter IP address (or leave blank for your IP): ").strip()
-    if not ip:
-        ip = ""
-    url = f"https://ipinfo.io/{ip}/json"
-    try:
-        response = requests.get(url)
-        data = response.json()
-        print("\n--- IP Info ---")
-        for key, value in data.items():
-            print(f"{key.title()}: {value}")
-    except Exception as e:
-        print(f"{Fore.RED}Error retrieving IP info: {e}")
+    # [4] IP info
+    elif menu == "4":
+        ip = input("Enter IP address (or leave blank for your IP): ").strip()
+        if not ip:
+            ip = ""
+        url = f"https://ipinfo.io/{ip}/json"
+        try:
+            response = requests.get(url)
+            data = response.json()
+            print("\n--- IP Info ---")
+            for key, value in data.items():
+                print(f"{key.title()}: {value}")
+        except Exception as e:
+            print(f"{Fore.RED}Error retrieving IP info: {e}")
 
-# Email info
-elif menu == "5":
-    email = input("Enter email address: ").strip()
-    mailboxlayer_key = "ab153dcd49b5511b5dab7b16c7c2a8c0"  # Replace with your key
-    url = f"http://apilayer.net/api/check?access_key={mailboxlayer_key}&email={email}&smtp=1&format=1"
-    try:
-        response = requests.get(url)
-        data = response.json()
-        print("\n--- Email Info ---")
-        print(f"Format Valid: {data.get('format_valid')}")
-        print(f"MX Found: {data.get('mx_found')}")
-        print(f"SMTP Check: {data.get('smtp_check')}")
-        print(f"Disposable: {data.get('disposable')}")
-        print(f"Domain: {data.get('domain')}")
-        print(f"Free Email: {data.get('free')}")
-        print(f"Score: {data.get('score')} (0 to 1, higher = more deliverable)")
-        if not data.get("format_valid"):
-            print(f"{Fore.YELLOW}[!] Invalid email format.")
-    except Exception as e:
-        print(f"{Fore.RED}Error validating email: {e}")
+    # [5] Email validation
+    elif menu == "5":
+        email = input("Enter email address: ").strip()
+        mailboxlayer_key = "ab153dcd49b5511b5dab7b16c7c2a8c0"  # Replace with your key
+        url = f"http://apilayer.net/api/check?access_key={mailboxlayer_key}&email={email}&smtp=1&format=1"
+        try:
+            response = requests.get(url)
+            data = response.json()
+            print("\n--- Email Info ---")
+            print(f"Format Valid: {data.get('format_valid')}")
+            print(f"MX Found: {data.get('mx_found')}")
+            print(f"SMTP Check: {data.get('smtp_check')}")
+            print(f"Disposable: {data.get('disposable')}")
+            print(f"Domain: {data.get('domain')}")
+            print(f"Free Email: {data.get('free')}")
+            print(f"Score: {data.get('score')} (0 to 1, higher = more deliverable)")
+            if not data.get("format_valid"):
+                print(f"{Fore.YELLOW}[!] Invalid email format.")
+        except Exception as e:
+            print(f"{Fore.RED}Error validating email: {e}")
 
-# Invalid selection
-else:
-    print(f"{Fore.RED}[!] Invalid selection.")
+    else:
+        print(f"{Fore.RED}[!] Invalid selection.")
 
-# Keep window open
+except Exception as e:
+    print(f"\n{Fore.RED}[!] Unexpected error: {e}")
+
+# Always pause at the end
 input("\nPress Enter to exit...")
