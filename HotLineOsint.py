@@ -6,25 +6,27 @@ init(autoreset=True)
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
+from colorama import Fore, Back, Style, init
+
+init(autoreset=True)
+
 print(f'''
-{Fore.RED}
-██╗  ██╗ ██████╗ ████████╗██╗     ██╗███╗   ██╗███████╗
-██║  ██║██╔═══██╗╚══██╔══╝██║     ██║████╗  ██║██╔════╝
-███████║██║   ██║   ██║   ██║     ██║██╔██╗ ██║█████╗  
-██╔══██║██║   ██║   ██║   ██║     ██║██║╚██╗██║██╔══╝  
-██║  ██║╚██████╔╝   ██║   ███████╗██║██║ ╚████║███████╗
-╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝
+{Fore.MAGENTA}{Style.BRIGHT}██╗  ██╗ ██████╗ ████████╗██╗     ██╗███╗   ██╗███████╗
+{Fore.BLUE}{Style.BRIGHT}██║  ██║██╔═══██╗╚══██╔══╝██║     ██║████╗  ██║██╔════╝
+{Fore.MAGENTA}{Style.BRIGHT}███████║██║   ██║   ██║   ██║     ██║██╔██╗ ██║█████╗  
+{Fore.BLUE}{Style.BRIGHT}██╔══██║██║   ██║   ██║   ██║     ██║██║╚██╗██║██╔══╝  
+{Fore.MAGENTA}{Style.BRIGHT}██║  ██║╚██████╔╝   ██║   ███████╗██║██║ ╚████║███████╗
+{Fore.BLUE}{Style.BRIGHT}╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝
 ''')
 
-print(" Made by Hanako ")
-print(f'{Fore.RED}           ╔══════════════════════════╗')
-print(f'{Fore.RED}           ║{Fore.WHITE}   [1] Enter Name Info    {Fore.RED}║')
-print(f'{Fore.RED}           ║{Fore.WHITE}   [2] Enter Phone Number {Fore.RED}║')
-print(f'{Fore.RED}           ║{Fore.WHITE}   [3] Enter Address Info {Fore.RED}║')
-print(f'{Fore.RED}           ║{Fore.WHITE}   [4] Enter IP Info      {Fore.RED}║')
-print(f'{Fore.RED}           ╚══════════════════════════╝\n')
+print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ╔══════════════════════════╗  ")
+print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [1] Enter Name Info    ║  ")
+print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [2] Enter Phone Number ║  ")
+print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [3] Enter Address Info ║  ")
+print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [4] Enter IP Info      ║  ")
+print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ╚══════════════════════════╝  \n")
 
-menu = input(f'{Fore.YELLOW}[?] Select an option > {Fore.RESET}')
+menu = input(f"{{Fore.CYAN}{Style.BRIGHT}[?] Select an option > {Fore.RESET}")
 
 if menu == "1":
     firstname = input("First name: ")
