@@ -1,14 +1,17 @@
 import os
+import requests
 import webbrowser
 from colorama import Fore, init
 
+# Initialize colorama
 init(autoreset=True)
 
+# Clear screen
 os.system('cls' if os.name == 'nt' else 'clear')
 
+# Banner
 print(f'''
 {Fore.MAGENTA}
-
 ░█████╗░░█████╗░░█████╗░  ██╗░░██╗  ░█████╗░██████╗░██╗░░██╗░██████╗
 ██╔══██╗██╔══██╗██╔══██╗  ╚██╗██╔╝  ██╔═══╝░██╔══██╗██║░██╔╝██╔════╝
 ╚██████║╚█████╔╝╚█████╔╝  ░╚███╔╝░  ██████╗░██████╔╝█████═╝░╚█████╗░
@@ -18,6 +21,7 @@ print(f'''
 ''')
 print(" Made By Hanako ")
 
+# Menu
 print(f'{Fore.CYAN}           ╔══════════════════════════╗')
 print(f'{Fore.CYAN}           ║   [1] Enter Name Info    ║')
 print(f'{Fore.BLUE}           ║   [2] Enter Phone Number ║')
@@ -29,18 +33,16 @@ print(" 1 and 3 will redirect you to the website")
 
 menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}')
 
+# Name info → redirect
 if menu == "1":
-    firstname = input("First name: ").strip().replace(" ", "+")
-    lastname = input("Last name: ").strip().replace(" ", "+")
-    location = input("City/State/Zip: ").strip().replace(" ", "+")
-    query = f"{firstname}+{lastname}+{location}"
-    url = f"https://www.beenverified.com/people/{query}/"
+    url = f"https://www.beenverified.com/people/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
+# Phone info
 elif menu == "2":
     phone = input("Enter phone number (with country code): ").strip()
-    api_key = "06b6f2d35967239292125f2cc9a76d35"
+    api_key = "06b6f2d35967239292125f2cc9a76d35"  # Replace with your actual key
     url = f"http://apilayer.net/api/validate?access_key={api_key}&number={phone}"
     try:
         response = requests.get(url)
@@ -56,15 +58,13 @@ elif menu == "2":
     except Exception as e:
         print(f"{Fore.RED}Error retrieving phone info: {e}")
 
+# Address info → redirect
 elif menu == "3":
-    house = input("House number: ").strip().replace(" ", "+")
-    street = input("Street name: ").strip().replace(" ", "+")
-    city = input("City: ").strip().replace(" ", "+")
-    state = input("State abbreviation: ").strip().upper()
-    url = f"https://www.beenverified.com/address-lookup/{house}+{street}+{city}+{state}/"
+    url = f"https://www.beenverified.com/address-lookup/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
+# IP info
 elif menu == "4":
     ip = input("Enter IP address (or leave blank for your IP): ").strip()
     if not ip:
@@ -79,13 +79,14 @@ elif menu == "4":
     except Exception as e:
         print(f"{Fore.RED}Error retrieving IP info: {e}")
 
-el    email = input("Enter email address: ").strip()
-    mailboxlayer_key = "ab153dcd49b5511b5dab7b16c7c2a8c0" 
+# Email info
+elif menu == "5":
+    email = input("Enter email address: ").strip()
+    mailboxlayer_key = "ab153dcd49b5511b5dab7b16c7c2a8c0"  # Replace with your key
     url = f"http://apilayer.net/api/check?access_key={mailboxlayer_key}&email={email}&smtp=1&format=1"
     try:
         response = requests.get(url)
         data = response.json()
-
         print("\n--- Email Info ---")
         print(f"Format Valid: {data.get('format_valid')}")
         print(f"MX Found: {data.get('mx_found')}")
@@ -94,13 +95,14 @@ el    email = input("Enter email address: ").strip()
         print(f"Domain: {data.get('domain')}")
         print(f"Free Email: {data.get('free')}")
         print(f"Score: {data.get('score')} (0 to 1, higher = more deliverable)")
-
         if not data.get("format_valid"):
             print(f"{Fore.YELLOW}[!] Invalid email format.")
     except Exception as e:
         print(f"{Fore.RED}Error validating email: {e}")
 
+# Invalid selection
 else:
     print(f"{Fore.RED}[!] Invalid selection.")
 
+# Keep window open
 input("\nPress Enter to exit...")
