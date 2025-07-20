@@ -1,14 +1,10 @@
 import os
 import webbrowser
-from colorama import Fore, init
+from colorama import Fore, Back, Style, init
 
 init(autoreset=True)
 
 os.system('cls' if os.name == 'nt' else 'clear')
-
-from colorama import Fore, Back, Style, init
-
-init(autoreset=True)
 
 print(f'''
 {Fore.MAGENTA}{Style.BRIGHT}██╗  ██╗ █████╗ ██╗     ██████╗ ██╗     ███████╗
@@ -26,7 +22,7 @@ print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [3] Enter Address Info �
 print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ║   [4] Enter IP Info      ║  ")
 print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ╚══════════════════════════╝  \n")
 
-menu = input(f"{{Fore.CYAN}{Style.BRIGHT}[?] Select an option > {Fore.RESET}")
+menu = input(f"{Fore.CYAN}{Style.BRIGHT}[?] Select an option > {Fore.RESET}")
 
 if menu == "1":
     firstname = input("First name: ")
