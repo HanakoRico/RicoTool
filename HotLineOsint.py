@@ -11,12 +11,12 @@ from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
 print(f'''
-{Fore.MAGENTA}{Style.BRIGHT}██╗  ██╗ ██████╗ ████████╗██╗     ██╗███╗   ██╗███████╗
-{Fore.BLUE}{Style.BRIGHT}██║  ██║██╔═══██╗╚══██╔══╝██║     ██║████╗  ██║██╔════╝
-{Fore.MAGENTA}{Style.BRIGHT}███████║██║   ██║   ██║   ██║     ██║██╔██╗ ██║█████╗  
-{Fore.BLUE}{Style.BRIGHT}██╔══██║██║   ██║   ██║   ██║     ██║██║╚██╗██║██╔══╝  
-{Fore.MAGENTA}{Style.BRIGHT}██║  ██║╚██████╔╝   ██║   ███████╗██║██║ ╚████║███████╗
-{Fore.BLUE}{Style.BRIGHT}╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝
+{Fore.MAGENTA}{Style.BRIGHT}██╗  ██╗ █████╗ ██╗     ██████╗ ██╗     ███████╗
+{Fore.BLUE}{Style.BRIGHT}██║  ██║██╔══██╗██║     ██╔══██╗██║     ██╔════╝
+{Fore.MAGENTA}{Style.BRIGHT}███████║███████║██║     ██████╔╝██║     █████╗  
+{Fore.BLUE}{Style.BRIGHT}██╔══██║██╔══██║██║     ██╔═══╝ ██║     ██╔══╝  
+{Fore.MAGENTA}{Style.BRIGHT}██║  ██║██║  ██║███████╗██║     ███████╗███████╗
+{Fore.BLUE}{Style.BRIGHT}╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝     ╚══════╝╚══════╝
 ''')
 
 print(f"{Back.MAGENTA}{Fore.CYAN}{Style.BRIGHT}  ╔══════════════════════════╗  ")
