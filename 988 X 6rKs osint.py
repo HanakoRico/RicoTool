@@ -38,10 +38,22 @@ if menu == "1":
     webbrowser.open(url)
 
 elif menu == "2":
-    phone = input("Enter full phone number (digits only): ").strip()
-    url = f"https://www.beenverified.com/phone/{phone}/"
-    print(f"\nOpening: {url}")
-    webbrowser.open(url)
+    phone = input("Enter phone number (with country code): ").strip()
+    api_key = "06b6f2d35967239292125f2cc9a76d35"
+    url = f"http://apilayer.net/api/validate?access_key={api_key}&number={phone}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        if data.get("valid"):
+            print("\n--- Phone Info ---")
+            print(f"Country: {data.get('country_name')}")
+            print(f"Location: {data.get('location')}")
+            print(f"Carrier: {data.get('carrier')}")
+            print(f"Line Type: {data.get('line_type')}")
+        else:
+            print(f"{Fore.YELLOW}[!] Invalid phone number.")
+    except Exception as e:
+        print(f"{Fore.RED}Error retrieving phone info: {e}")
 
 elif menu == "3":
     house = input("House number: ").strip().replace(" ", "+")
@@ -53,16 +65,39 @@ elif menu == "3":
     webbrowser.open(url)
 
 elif menu == "4":
-    ip = input("IP address: ").strip()
-    url = f"https://www.iplocation.net/ip-lookup?query={ip}"
-    print(f"\nOpening: {url}")
-    webbrowser.open(url)
+    ip = input("Enter IP address (or leave blank for your IP): ").strip()
+    if not ip:
+        ip = ""
+    url = f"https://ipinfo.io/{ip}/json"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        print("\n--- IP Info ---")
+        for key, value in data.items():
+            print(f"{key.title()}: {value}")
+    except Exception as e:
+        print(f"{Fore.RED}Error retrieving IP info: {e}")
 
-elif menu == "5":
-    email = input("Email address: ").strip()
-    url = f"https://www.beenverified.com/email/{email}/"
-    print(f"\nOpening: {url}")
-    webbrowser.open(url)
+el    email = input("Enter email address: ").strip()
+    mailboxlayer_key = "ab153dcd49b5511b5dab7b16c7c2a8c0" 
+    url = f"http://apilayer.net/api/check?access_key={mailboxlayer_key}&email={email}&smtp=1&format=1"
+    try:
+        response = requests.get(url)
+        data = response.json()
+
+        print("\n--- Email Info ---")
+        print(f"Format Valid: {data.get('format_valid')}")
+        print(f"MX Found: {data.get('mx_found')}")
+        print(f"SMTP Check: {data.get('smtp_check')}")
+        print(f"Disposable: {data.get('disposable')}")
+        print(f"Domain: {data.get('domain')}")
+        print(f"Free Email: {data.get('free')}")
+        print(f"Score: {data.get('score')} (0 to 1, higher = more deliverable)")
+
+        if not data.get("format_valid"):
+            print(f"{Fore.YELLOW}[!] Invalid email format.")
+    except Exception as e:
+        print(f"{Fore.RED}Error validating email: {e}")
 
 else:
     print(f"{Fore.RED}[!] Invalid selection.")
