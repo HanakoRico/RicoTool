@@ -29,39 +29,38 @@ print(f'{Fore.MAGENTA}           ╚══════════════�
 menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}')
 
 if menu == "1":
-    firstname = input("First name: ")
-    lastname = input("Last name: ")
-    location = input("City/State/Zip: ")
-    url = f"https://www.beenverified.com/?utm_source=brave&utm_medium=cpc&utm_campaign=BV_PPL_SEA_PRP_PPS_Brave_Peace_Of_Mind&utm_querytype=nonbrand{firstname}-{lastname}_{location}"
+    firstname = input("First name: ").strip().replace(" ", "+")
+    lastname = input("Last name: ").strip().replace(" ", "+")
+    location = input("City/State/Zip: ").strip().replace(" ", "+")
+    query = f"{firstname}+{lastname}+{location}"
+    url = f"https://www.beenverified.com/people/{query}/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
 elif menu == "2":
-    part1 = input("First 3 digits: ")
-    part2 = input("Next 3 digits: ")
-    part3 = input("Last 4 digits: ")
-    url = f"https://www.beenverified.com/reverse-phone/"
+    phone = input("Enter full phone number (digits only): ").strip()
+    url = f"https://www.beenverified.com/phone/{phone}/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
 elif menu == "3":
-    house = input("House number: ")
-    street = input("Street: ")
-    city = input("City: ")
-    state = input("State: ")
-    url = f"https://www.beenverified.com/reverse-address-lookup/"
+    house = input("House number: ").strip().replace(" ", "+")
+    street = input("Street name: ").strip().replace(" ", "+")
+    city = input("City: ").strip().replace(" ", "+")
+    state = input("State abbreviation: ").strip().upper()
+    url = f"https://www.beenverified.com/address-lookup/{house}+{street}+{city}+{state}/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
 elif menu == "4":
-    ip = input("IP ")
-    url = f"https://www.iplocation.net/ip-lookup"
+    ip = input("IP address: ").strip()
+    url = f"https://www.iplocation.net/ip-lookup?query={ip}"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
 elif menu == "5":
-    ip = input("Email ")
-    url = f"https://www.beenverified.com/email-search/"
+    email = input("Email address: ").strip()
+    url = f"https://www.beenverified.com/email/{email}/"
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
