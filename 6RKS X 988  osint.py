@@ -19,14 +19,14 @@ print(f'''
 print(" Made By Hanako ")
 
 print(f'{Fore.CYAN}           ╔══════════════════════════╗')
-print(f'{Fore.MAGENTA}           ║   [1] Enter Name Info    ║')
-print(f'{Fore.CYAN}           ║   [2] Enter Phone Number ║')
-print(f'{Fore.MAGENTA}           ║   [3] Enter Address Info ║')
-print(f'{Fore.CYAN}           ║   [4] Enter IP Info      ║')
+print(f'{Fore.CYAN}           ║   [1] Enter Name Info    ║')
+print(f'{Fore.BLUE}           ║   [2] Enter Phone Number ║')
+print(f'{Fore.BLUE}           ║   [3] Enter Address Info ║')
+print(f'{Fore.MAGENTA}           ║   [4] Enter IP Info      ║')
 print(f'{Fore.MAGENTA}           ║   [5] Enter Email Info   ║')
-print(f'{Fore.CYAN}           ╚══════════════════════════╝\n')
+print(f'{Fore.MAGENTA}           ╚══════════════════════════╝\n')
 
-menu = input(f'{Fore.YELLOW}[?] Select an option > {Fore.RESET}')
+menu = input(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}')
 
 if menu == "1":
     firstname = input("First name: ")
