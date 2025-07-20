@@ -59,27 +59,7 @@ EMAIL_API_KEY_ENC = "YWIxNTNkY2Q0OWI1NTExYjVkYWI3YjE2YzdjMmE4YzA="    # example 
 phone_api_key = decrypt_key(PHONE_API_KEY_ENC)
 email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
 
-def center_text(text):
-    """Return text padded with spaces to be centered horizontally."""
-    columns = shutil.get_terminal_size().columns
-    lines = text.split('\n')
-    centered_lines = []
-    for line in lines:
-        line_stripped = line.strip('\n')
-        padding = max((columns - len(line_stripped)) // 2, 0)
-        centered_lines.append(' ' * padding + line_stripped)
-    return '\n'.join(centered_lines)
-
-def vertical_center_print(text):
-    """Print text vertically and horizontally centered."""
-    size = shutil.get_terminal_size()
-    total_lines = text.count('\n') + 1
-    vertical_padding = max((size.lines - total_lines) // 2, 0)
-    print('\n' * vertical_padding)
-    print(center_text(text))
-
-# Your banner text (without the extra leading/trailing newlines)
-banner = f'''
+content = f'''
 {Fore.MAGENTA}
 ░█████╗░░█████╗░░█████╗░  ██╗░░██╗  ░█████╗░██████╗░██╗░░██╗░██████╗
 ██╔══██╗██╔══██╗██╔══██╗  ╚██╗██╔╝  ██╔═══╝░██╔══██╗██║░██╔╝██╔════╝
@@ -87,9 +67,7 @@ banner = f'''
 ░╚═══██║██╔══██╗██╔══██╗  ░██╔██╗░  ██╔══██╗██╔══██╗██╔═██╗░░╚═══██╗
 ░█████╔╝╚█████╔╝╚█████╔╝  ██╔╝╚██╗  ╚█████╔╝██║░░██║██║░╚██╗██████╔╝
 ░╚════╝░░╚════╝░░╚════╝░  ╚═╝░░╚═╝  ░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
-'''
 
-menu = f'''
 {Fore.CYAN}           ╔══════════════════════════╗
 {Fore.CYAN}           ║   [1] Enter Name Info    ║
 {Fore.BLUE}           ║   [2] Enter Phone Number ║
@@ -97,12 +75,12 @@ menu = f'''
 {Fore.MAGENTA}           ║   [4] Enter IP Info      ║
 {Fore.MAGENTA}           ║   [5] Enter Email Info   ║
 {Fore.MAGENTA}           ╚══════════════════════════╝
+
+Made By Hanako
+1 and 3 will redirect you to the website
 '''
 
-vertical_center_print(banner)
-print(center_text("Made By Hanako\n"))
-vertical_center_print(menu)
-print(center_text("1 and 3 will redirect you to the website\n"))
+vertical_center_print(content)
 
 menu_choice = input(center_text(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}'))
 
