@@ -5,7 +5,6 @@ import threading
 import requests
 import webbrowser
 import base64
-import shutil
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -27,7 +26,7 @@ def spinner(done_flag):
         print(f'\r{Fore.CYAN}{symbols[idx % len(symbols)]} Loading...', end='')
         idx += 1
         time.sleep(0.1)
-    print('\r', end='')  # clear line when done
+    print('\r', end='')  # Clear line when done
 
 # Progress bar function
 def progress_bar(done_flag, duration=5):
@@ -48,17 +47,18 @@ def progress_bar(done_flag, duration=5):
 
     sys.stdout.write("]\n")
 
-# Key decryption helper
+# Base64 key decoder
 def decrypt_key(encoded_key):
     return base64.b64decode(encoded_key.encode()).decode()
 
-# Your encoded API keys here (replace with your actual encoded keys)
-PHONE_API_KEY_ENC = "MDZiNmYyZDM1OTY3MjM5MjkyMTI1ZjJjYzlhNzZkMzU="  # example base64 string of your phone key
-EMAIL_API_KEY_ENC = "YWIxNTNkY2Q0OWI1NTExYjVkYWI3YjE2YzdjMmE4YzA="    # example base64 string of your email key
+# Your encoded API keys here
+PHONE_API_KEY_ENC = "MDZiNmYyZDM1OTY3MjM5MjkyMTI1ZjJjYzlhNzZkMzU="
+EMAIL_API_KEY_ENC = "YWIxNTNkY2Q0OWI1NTExYjVkYWI3YjE2YzdjMmE4YzA="
 
 phone_api_key = decrypt_key(PHONE_API_KEY_ENC)
 email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
 
+# Display menu
 content = f'''
 {Fore.MAGENTA}
  ██░ ██ ▓█████  ██▓     ██▓███   ██▓     ██▓ ███▄    █ ▓█████     ▒█████    ██████  ██▓ ███▄    █ ▄▄▄█████▓
@@ -70,7 +70,6 @@ content = f'''
  ▒ ░▒░ ░ ░ ░  ░░ ░ ▒  ░░▒ ░     ░ ░ ▒  ░ ▒ ░░ ░░   ░ ▒░ ░ ░  ░     ░ ▒ ▒░ ░ ░▒  ░ ░ ▒ ░░ ░░   ░ ▒░    ░    
  ░  ░░ ░   ░     ░ ░   ░░         ░ ░    ▒ ░   ░   ░ ░    ░      ░ ░ ░ ▒  ░  ░  ░   ▒ ░   ░   ░ ░   ░      
  ░  ░  ░   ░  ░    ░  ░             ░  ░ ░           ░    ░  ░       ░ ░        ░   ░           ░          
-                                                                                                           
 
 {Fore.CYAN}           ╔══════════════════════════╗
 {Fore.CYAN}           ║   [1] Enter Name Info    ║
@@ -80,10 +79,11 @@ content = f'''
 {Fore.MAGENTA}           ║   [5] Enter Email Info   ║
 {Fore.MAGENTA}           ╚══════════════════════════╝
 
-print("Made By Hanako")
-print("1 and 3 will redirect you to the website")
+Made By Hanako
+1 and 3 will redirect you to the website
 '''
 
+print(content)
 menu = input("Select an option [1-5]: ").strip()
 
 if menu == "1":
@@ -102,7 +102,6 @@ elif menu == "2":
     done_flag = [False]
     t_spinner = threading.Thread(target=spinner, args=(done_flag,))
     t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-
     t_spinner.start()
     t_progress.start()
 
@@ -139,14 +138,11 @@ elif menu == "3":
 
 elif menu == "4":
     ip = input("Enter IP address (or leave blank for your IP): ").strip()
-    if not ip:
-        ip = ""
-    url = f"https://ipinfo.io/{ip}/json"
+    url = f"https://ipinfo.io/{ip}/json" if ip else "https://ipinfo.io/json"
 
     done_flag = [False]
     t_spinner = threading.Thread(target=spinner, args=(done_flag,))
     t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-
     t_spinner.start()
     t_progress.start()
 
@@ -172,7 +168,6 @@ elif menu == "5":
     done_flag = [False]
     t_spinner = threading.Thread(target=spinner, args=(done_flag,))
     t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-
     t_spinner.start()
     t_progress.start()
 
@@ -204,4 +199,3 @@ else:
     print(f"{Fore.RED}[!] Invalid selection.")
 
 input("\nPress Enter to exit...")
-
