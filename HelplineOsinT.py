@@ -60,7 +60,7 @@ email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
 
 # Display menu
 content = f'''
-{Fore.MAGENTA}
+{Fore.BLUE}
  ██░ ██ ▓█████  ██▓     ██▓███   ██▓     ██▓ ███▄    █ ▓█████     ▒█████    ██████  ██▓ ███▄    █ ▄▄▄█████▓
 ▓██░ ██▒▓█   ▀ ▓██▒    ▓██░  ██▒▓██▒    ▓██▒ ██ ▀█   █ ▓█   ▀    ▒██▒  ██▒▒██    ▒ ▓██▒ ██ ▀█   █ ▓  ██▒ ▓▒
 ▒██▀▀██░▒███   ▒██░    ▓██░ ██▓▒▒██░    ▒██▒▓██  ▀█ ██▒▒███      ▒██░  ██▒░ ▓██▄   ▒██▒▓██  ▀█ ██▒▒ ▓██░ ▒░
@@ -83,8 +83,8 @@ Made By Hanako
 1 and 3 will redirect you to the website
 '''
 
-print(content)
-menu = input("Select an option [1-5]: ").strip()
+print(Fore.GREEN + content)
+menu = input(Fore.GREEN + "Select an option [1-5]: ").strip()
 
 if menu == "1":
     firstname = input("First name: ").strip().replace(" ", "+")
