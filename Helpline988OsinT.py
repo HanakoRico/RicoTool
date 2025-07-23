@@ -69,7 +69,9 @@ content = f'''
 | (   ) || (      | |      | (      | |         | |   | | \   || (        | |   | |      ) |   | |   | | \   |   | |   
 | )   ( || (____/\| (____/\| )      | (____/\___) (___| )  \  || (____/\  | (___) |/\____) |___) (___| )  \  |   | |   
 |/     \|(_______/(_______/|/       (_______/\_______/|/    )_)(_______/  (_______)\_______)\_______/|/    )_)   )_(   
-                                                                                                                       
+
+{Fore.RED} Made By Hanako
+{Fore.RED} 1 and 3 will redirect you to the website                                                                                                                       
 
 {Fore.CYAN} [１] Ｅｎｔｅｒ Ｎａｍｅ Ｉｎｆｏ    
 {Fore.BLUE} [２] Ｅｎｔｅｒ Ｐｈｏｎｅ Ｎｕｍｂｅｒ
@@ -77,9 +79,6 @@ content = f'''
 {Fore.BLUE} [４] Ｅｎｔｅｒ ＩＰ Ｉｎｆｏ
 {Fore.CYAN} [５] Ｅｎｔｅｒ Ｅｍａｉｌ Ｉｎｆｏ
 
-
-Made By Hanako
-1 and 3 will redirect you to the website
 '''
 
 print(Fore.GREEN + content)
