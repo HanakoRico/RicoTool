@@ -84,10 +84,6 @@ Made By Hanako
 1 and 3 will redirect you to the website
 '''
 
-vertical_center_print(content)
-
-menu_choice = input(center_text(f'{Fore.GREEN}[?] Select an option > {Fore.RESET}'))
-
 if menu == "1":
     firstname = input("First name: ").strip().replace(" ", "+")
     lastname = input("Last name: ").strip().replace(" ", "+")
