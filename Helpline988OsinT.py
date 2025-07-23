@@ -73,9 +73,9 @@ content = f'''
 
 {Fore.CYAN} [１] Ｅｎｔｅｒ Ｎａｍｅ Ｉｎｆｏ    
 {Fore.BLUE} [２] Ｅｎｔｅｒ Ｐｈｏｎｅ Ｎｕｍｂｅｒ
-{Fore.BLUE} [３] Ｅｎｔｅｒ Ａｄｄｒｅｓｓ Ｉｎｆｏ  
-{Fore.MAGENTA} [４] Ｅｎｔｅｒ ＩＰ Ｉｎｆｏ
-{Fore.MAGENTA} [５] Ｅｎｔｅｒ Ｅｍａｉｌ Ｉｎｆｏ
+{Fore.MAGENTA} [３] Ｅｎｔｅｒ Ａｄｄｒｅｓｓ Ｉｎｆｏ  
+{Fore.BLUE} [４] Ｅｎｔｅｒ ＩＰ Ｉｎｆｏ
+{Fore.CYAN} [５] Ｅｎｔｅｒ Ｅｍａｉｌ Ｉｎｆｏ
 
 
 Made By Hanako
