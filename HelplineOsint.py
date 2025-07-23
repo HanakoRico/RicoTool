@@ -80,9 +80,11 @@ content = f'''
 {Fore.MAGENTA}           ║   [5] Enter Email Info   ║
 {Fore.MAGENTA}           ╚══════════════════════════╝
 
-Made By Hanako
-1 and 3 will redirect you to the website
+print("Made By Hanako")
+print("1 and 3 will redirect you to the website")
 '''
+
+menu = input("Select an option [1-5]: ").strip()
 
 if menu == "1":
     firstname = input("First name: ").strip().replace(" ", "+")
