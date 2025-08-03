@@ -78,7 +78,7 @@ ooooo   ooooo               .   oooo   o8o                               .oooooo
  888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
  888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
  888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
-o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"                                                                                                                        
+o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"                                                                                                                         
 {Fore.RED} Made By Hanako
 
 {Fore.CYAN} [1] Enter Name Info    
@@ -88,13 +88,14 @@ o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8
 {Fore.MAGENTA} [5] Enter Email Info
 {Fore.MAGENTA} [6] DNS Lookup
 {Fore.BLUE} [7] Ping IP Address
+{Fore.CYAN} [8] See website code
 {Fore.CYAN} [0] Exit
 '''
     print(Fore.GREEN + content)
 
 while True:
     print_menu()
-    menu = input(Fore.GREEN + "Select an option [0-7]: ").strip()
+    menu = input(Fore.GREEN + "Select an option [0-8]: ").strip()
 
     if menu == "0":
         typewriter(f"{Fore.YELLOW}Exiting...")
@@ -228,6 +229,12 @@ while True:
             ping_ip(ip)
         else:
             typewriter(f"{Fore.YELLOW}[!] No IP entered.")
+
+    elif menu == "8":
+        url = "https://www.view-page-source.com/"
+        print(f"\nOpening: {url}")
+        webbrowser.open(url)
+
     else:
         typewriter(f"{Fore.RED}[!] Invalid selection.")
 
