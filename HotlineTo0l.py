@@ -105,10 +105,10 @@ o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8
 {Fore.MAGENTA} [5] Enter Email Info
 {Fore.MAGENTA} [6] DNS Lookup
 {Fore.BLUE} [7] Ping IP Address
-{Fore.CYAN} [8] See website code
+{Fore.BLUE} [8] See website code
+{Fore.CYAN}[0] Exit
 
 {Fore.YELLOW}Type 'flip' to return to previous menu.
-{Fore.CYAN}[0] Exit
 '''
     print(Fore.GREEN + content)
 
@@ -128,10 +128,6 @@ while True:
 
     if current_menu == 1:
         if menu == "1":
-            firstname = input("First name: ").strip().replace(" ", "+")
-            lastname = input("Last name: ").strip().replace(" ", "+")
-            location = input("City/State/Zip: ").strip().replace(" ", "+")
-            query = f"{firstname}+{lastname}+{location}"
             url = f"https://www.beenverified.com/people/{query}/"
             print(f"\nOpening: {url}")
             webbrowser.open(url)
@@ -166,10 +162,6 @@ while True:
                 typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
 
         elif menu == "3":
-            house = input("House number: ").strip().replace(" ", "+")
-            street = input("Street name: ").strip().replace(" ", "+")
-            city = input("City: ").strip().replace(" ", "+")
-            state = input("State abbreviation: ").strip().upper()
             url = f"https://www.beenverified.com/address-lookup/{house}+{street}+{city}+{state}/"
             print(f"\nOpening: {url}")
             webbrowser.open(url)
