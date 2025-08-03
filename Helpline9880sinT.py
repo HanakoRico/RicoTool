@@ -5,6 +5,8 @@ import threading
 import requests
 import webbrowser
 import base64
+import subprocess
+import platform
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -56,6 +58,19 @@ DNS_API_KEY = "fd2C3hFP53JrglsQFalzLg==p2qiqWdqaUVCNLno"  # ✅ fixed line
 phone_api_key = decrypt_key(PHONE_API_KEY_ENC)
 email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
 
+# IP pinger function
+def ping_ip(ip):
+    param = '-n' if platform.system().lower() == 'windows' else '-c'
+    command = ['ping', param, '1000', ip]
+
+    try:
+        output = subprocess.check_output(command, stderr=subprocess.STDOUT, universal_newlines=True)
+        typewriter(f"\n--- Ping results for {ip} ---\n{output}")
+    except subprocess.CalledProcessError as e:
+        typewriter(f"{Fore.RED}Failed to ping {ip}.\nError output:\n{e.output}")
+    except Exception as e:
+        typewriter(f"{Fore.RED}An error occurred: {e}")
+
 # Menu
 content = f'''
 {Fore.MAGENTA}
@@ -75,10 +90,11 @@ o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8
 {Fore.BLUE} [4] Enter IP Info
 {Fore.MAGENTA} [5] Enter Email Info
 {Fore.MAGENTA} [6] DNS Lookup
+{Fore.YELLOW} [7] Ping IP Address
 '''
 
 print(Fore.GREEN + content)
-menu = input(Fore.GREEN + "Select an option [1-6]: ").strip()
+menu = input(Fore.GREEN + "Select an option [1-7]: ").strip()
 
 # 1. Name Info
 if menu == "1":
@@ -219,6 +235,14 @@ elif menu == "6":
     except Exception as e:
         done_flag[0] = True
         typewriter(f"{Fore.RED}Exception during DNS lookup: {e}")
+
+# 7. Ping IP Address
+elif menu == "7":
+    ip = input("Enter IP address to ping: ").strip()
+    if ip:
+        ping_ip(ip)
+    else:
+        typewriter(f"{Fore.YELLOW}No IP address entered.")
 
 # Invalid Option
 else:
