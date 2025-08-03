@@ -126,7 +126,7 @@ while True:
 
     if current_menu == 1:
         if menu == "1":
-            url = f"https://www.beenverified.com/people/{query}/"
+            url = f"https://www.beenverified.com"
             print(f"\nOpening: {url}")
             webbrowser.open(url)
 
@@ -160,7 +160,7 @@ while True:
                 typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
 
         elif menu == "3":
-            url = f"https://www.beenverified.com/address-lookup/{house}+{street}+{city}+{state}/"
+            url = f"https://www.whitepages.com/reverse-address"
             print(f"\nOpening: {url}")
             webbrowser.open(url)
 
