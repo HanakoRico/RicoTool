@@ -68,9 +68,10 @@ def ping_ip(ip):
     except Exception as e:
         typewriter(f"{Fore.RED}An error occurred: {e}")
 
-def print_menu():
+def print_menu(menu_num):
     os.system('cls' if os.name == 'nt' else 'clear')
-    content = f'''
+    if menu_num == 1:
+        content = f'''
 {Fore.MAGENTA}
 ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
 `888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
@@ -78,164 +79,193 @@ ooooo   ooooo               .   oooo   o8o                               .oooooo
  888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
  888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
  888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
-o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"                                                                                                                         
+o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
 {Fore.RED} Made By Hanako
 
+{Fore.CYAN} [0] Exit
 {Fore.CYAN} [1] Enter Name Info    
 {Fore.CYAN} [2] Enter Phone Number
 {Fore.BLUE} [3] Enter Address Info  
 {Fore.BLUE} [4] Enter IP Info
+
+{Fore.YELLOW}Type 'flip' to see more options.
+'''
+    else:
+        content = f'''
+{Fore.MAGENTA}
+ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
+`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
+ 888     888   .ooooo.  .o888oo  888  oooo  ooo. .oo.    .ooooo.       888      888  .oooo.o oooo  ooo. .oo.   .o888oo 
+ 888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
+ 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
+ 888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
+o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
+{Fore.RED} Made By Hanako
+
 {Fore.MAGENTA} [5] Enter Email Info
 {Fore.MAGENTA} [6] DNS Lookup
 {Fore.BLUE} [7] Ping IP Address
 {Fore.CYAN} [8] See website code
-{Fore.CYAN} [0] Exit
+
+{Fore.YELLOW}Type 'flip' to return to previous menu.
+{Fore.CYAN}[0] Exit
 '''
     print(Fore.GREEN + content)
 
+current_menu = 1
+
 while True:
-    print_menu()
-    menu = input(Fore.GREEN + "Select an option [0-8]: ").strip()
+    print_menu(current_menu)
+    menu = input(Fore.GREEN + "Select an option or type 'flip': ").strip().lower()
+
+    if menu == "flip":
+        current_menu = 2 if current_menu == 1 else 1
+        continue
 
     if menu == "0":
         typewriter(f"{Fore.YELLOW}Exiting...")
         break
 
-    elif menu == "1":
-        firstname = input("First name: ").strip().replace(" ", "+")
-        lastname = input("Last name: ").strip().replace(" ", "+")
-        location = input("City/State/Zip: ").strip().replace(" ", "+")
-        query = f"{firstname}+{lastname}+{location}"
-        url = f"https://www.beenverified.com/people/{query}/"
-        print(f"\nOpening: {url}")
-        webbrowser.open(url)
+    if current_menu == 1:
+        if menu == "1":
+            firstname = input("First name: ").strip().replace(" ", "+")
+            lastname = input("Last name: ").strip().replace(" ", "+")
+            location = input("City/State/Zip: ").strip().replace(" ", "+")
+            query = f"{firstname}+{lastname}+{location}"
+            url = f"https://www.beenverified.com/people/{query}/"
+            print(f"\nOpening: {url}")
+            webbrowser.open(url)
 
-    elif menu == "2":
-        phone = input("Enter phone number (with country code): ").strip()
-        url = f"https://apilayer.net/api/validate?access_key={phone_api_key}&number={phone}"
-        done_flag = [False]
-        t_spinner = threading.Thread(target=spinner, args=(done_flag,))
-        t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-        t_spinner.start()
-        t_progress.start()
-        try:
-            response = requests.get(url)
-            done_flag[0] = True
-            t_spinner.join()
-            t_progress.join()
-            data = response.json()
-            if data.get("valid"):
-                output = (
-                    f"\n--- Phone Info ---\n"
-                    f"Country: {data.get('country_name')}\n"
-                    f"Location: {data.get('location')}\n"
-                    f"Carrier: {data.get('carrier')}\n"
-                    f"Line Type: {data.get('line_type')}\n"
-                )
+        elif menu == "2":
+            phone = input("Enter phone number (with country code): ").strip()
+            url = f"https://apilayer.net/api/validate?access_key={phone_api_key}&number={phone}"
+            done_flag = [False]
+            t_spinner = threading.Thread(target=spinner, args=(done_flag,))
+            t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
+            t_spinner.start()
+            t_progress.start()
+            try:
+                response = requests.get(url)
+                done_flag[0] = True
+                t_spinner.join()
+                t_progress.join()
+                data = response.json()
+                if data.get("valid"):
+                    output = (
+                        f"\n--- Phone Info ---\n"
+                        f"Country: {data.get('country_name')}\n"
+                        f"Location: {data.get('location')}\n"
+                        f"Carrier: {data.get('carrier')}\n"
+                        f"Line Type: {data.get('line_type')}\n"
+                    )
+                    typewriter(output)
+                else:
+                    typewriter(f"{Fore.YELLOW}[!] Invalid phone number.")
+            except Exception as e:
+                done_flag[0] = True
+                typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
+
+        elif menu == "3":
+            house = input("House number: ").strip().replace(" ", "+")
+            street = input("Street name: ").strip().replace(" ", "+")
+            city = input("City: ").strip().replace(" ", "+")
+            state = input("State abbreviation: ").strip().upper()
+            url = f"https://www.beenverified.com/address-lookup/{house}+{street}+{city}+{state}/"
+            print(f"\nOpening: {url}")
+            webbrowser.open(url)
+
+        elif menu == "4":
+            ip = input("Enter IP address (or leave blank for your IP): ").strip()
+            url = f"https://ipinfo.io/{ip}/json" if ip else "https://ipinfo.io/json"
+            done_flag = [False]
+            t_spinner = threading.Thread(target=spinner, args=(done_flag,))
+            t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
+            t_spinner.start()
+            t_progress.start()
+            try:
+                response = requests.get(url)
+                done_flag[0] = True
+                t_spinner.join()
+                t_progress.join()
+                data = response.json()
+                output = "\n--- IP Info ---\n"
+                for key, value in data.items():
+                    output += f"{key.title()}: {value}\n"
                 typewriter(output)
-            else:
-                typewriter(f"{Fore.YELLOW}[!] Invalid phone number.")
-        except Exception as e:
-            done_flag[0] = True
-            typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
+            except Exception as e:
+                done_flag[0] = True
+                typewriter(f"{Fore.RED}Error retrieving IP info: {e}")
 
-    elif menu == "3":
-        house = input("House number: ").strip().replace(" ", "+")
-        street = input("Street name: ").strip().replace(" ", "+")
-        city = input("City: ").strip().replace(" ", "+")
-        state = input("State abbreviation: ").strip().upper()
-        url = f"https://www.beenverified.com/address-lookup/{house}+{street}+{city}+{state}/"
-        print(f"\nOpening: {url}")
-        webbrowser.open(url)
-
-    elif menu == "4":
-        ip = input("Enter IP address (or leave blank for your IP): ").strip()
-        url = f"https://ipinfo.io/{ip}/json" if ip else "https://ipinfo.io/json"
-        done_flag = [False]
-        t_spinner = threading.Thread(target=spinner, args=(done_flag,))
-        t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-        t_spinner.start()
-        t_progress.start()
-        try:
-            response = requests.get(url)
-            done_flag[0] = True
-            t_spinner.join()
-            t_progress.join()
-            data = response.json()
-            output = "\n--- IP Info ---\n"
-            for key, value in data.items():
-                output += f"{key.title()}: {value}\n"
-            typewriter(output)
-        except Exception as e:
-            done_flag[0] = True
-            typewriter(f"{Fore.RED}Error retrieving IP info: {e}")
-
-    elif menu == "5":
-        email = input("Enter email address: ").strip()
-        url = f"https://apilayer.net/api/check?access_key={email_api_key}&email={email}&smtp=1&format=1"
-        done_flag = [False]
-        t_spinner = threading.Thread(target=spinner, args=(done_flag,))
-        t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-        t_spinner.start()
-        t_progress.start()
-        try:
-            response = requests.get(url)
-            done_flag[0] = True
-            t_spinner.join()
-            t_progress.join()
-            data = response.json()
-            output = (
-                f"\n--- Email Info ---\n"
-                f"Format Valid: {data.get('format_valid')}\n"
-                f"MX Found: {data.get('mx_found')}\n"
-                f"SMTP Check: {data.get('smtp_check')}\n"
-                f"Disposable: {data.get('disposable')}\n"
-                f"Domain: {data.get('domain')}\n"
-                f"Free Email: {data.get('free')}\n"
-                f"Score: {data.get('score')} (0 to 1, higher = more deliverable)\n"
-            )
-            if not data.get("format_valid"):
-                output += f"{Fore.YELLOW}[!] Invalid email format.\n"
-            typewriter(output)
-        except Exception as e:
-            done_flag[0] = True
-            typewriter(f"{Fore.RED}Error validating email: {e}")
-
-    elif menu == "6":
-        domain = input("Enter domain (e.g. example.com): ").strip()
-        api_url = f'https://api.api-ninjas.com/v1/dnslookup?domain={domain}'
-        headers = {'X-Api-Key': DNS_API_KEY}
-        done_flag = [False]
-        t_spinner = threading.Thread(target=spinner, args=(done_flag,))
-        t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-        t_spinner.start()
-        t_progress.start()
-        try:
-            response = requests.get(api_url, headers=headers)
-            done_flag[0] = True
-            t_spinner.join()
-            t_progress.join()
-            if response.status_code == 200:
-                typewriter(f"\n--- DNS Records for {domain} ---\n{response.text}")
-            else:
-                typewriter(f"{Fore.RED}Error {response.status_code}: {response.text}")
-        except Exception as e:
-            done_flag[0] = True
-            typewriter(f"{Fore.RED}Exception during DNS lookup: {e}")
-
-    elif menu == "7":
-        ip = input("Enter IP address to ping: ").strip()
-        if ip:
-            ping_ip(ip)
         else:
-            typewriter(f"{Fore.YELLOW}[!] No IP entered.")
+            typewriter(f"{Fore.RED}[!] Invalid selection.")
 
-    elif menu == "8":
-        url = "https://www.view-page-source.com/"
-        print(f"\nOpening: {url}")
-        webbrowser.open(url)
+    else:  # menu 2 options 5-8
+        if menu == "5":
+            email = input("Enter email address: ").strip()
+            url = f"https://apilayer.net/api/check?access_key={email_api_key}&email={email}&smtp=1&format=1"
+            done_flag = [False]
+            t_spinner = threading.Thread(target=spinner, args=(done_flag,))
+            t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
+            t_spinner.start()
+            t_progress.start()
+            try:
+                response = requests.get(url)
+                done_flag[0] = True
+                t_spinner.join()
+                t_progress.join()
+                data = response.json()
+                output = (
+                    f"\n--- Email Info ---\n"
+                    f"Format Valid: {data.get('format_valid')}\n"
+                    f"MX Found: {data.get('mx_found')}\n"
+                    f"SMTP Check: {data.get('smtp_check')}\n"
+                    f"Disposable: {data.get('disposable')}\n"
+                    f"Domain: {data.get('domain')}\n"
+                    f"Free Email: {data.get('free')}\n"
+                    f"Score: {data.get('score')} (0 to 1, higher = more deliverable)\n"
+                )
+                if not data.get("format_valid"):
+                    output += f"{Fore.YELLOW}[!] Invalid email format.\n"
+                typewriter(output)
+            except Exception as e:
+                done_flag[0] = True
+                typewriter(f"{Fore.RED}Error validating email: {e}")
 
-    else:
-        typewriter(f"{Fore.RED}[!] Invalid selection.")
+        elif menu == "6":
+            domain = input("Enter domain (e.g. example.com): ").strip()
+            api_url = f'https://api.api-ninjas.com/v1/dnslookup?domain={domain}'
+            headers = {'X-Api-Key': DNS_API_KEY}
+            done_flag = [False]
+            t_spinner = threading.Thread(target=spinner, args=(done_flag,))
+            t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
+            t_spinner.start()
+            t_progress.start()
+            try:
+                response = requests.get(api_url, headers=headers)
+                done_flag[0] = True
+                t_spinner.join()
+                t_progress.join()
+                if response.status_code == 200:
+                    typewriter(f"\n--- DNS Records for {domain} ---\n{response.text}")
+                else:
+                    typewriter(f"{Fore.RED}Error {response.status_code}: {response.text}")
+            except Exception as e:
+                done_flag[0] = True
+                typewriter(f"{Fore.RED}Exception during DNS lookup: {e}")
+
+        elif menu == "7":
+            ip = input("Enter IP address to ping: ").strip()
+            if ip:
+                ping_ip(ip)
+            else:
+                typewriter(f"{Fore.YELLOW}[!] No IP entered.")
+
+        elif menu == "8":
+            url = "https://www.view-page-source.com/"
+            print(f"\nOpening: {url}")
+            webbrowser.open(url)
+
+        else:
+            typewriter(f"{Fore.RED}[!] Invalid selection.")
 
     input(f"\n{Fore.CYAN}Press Enter to return to menu...")
