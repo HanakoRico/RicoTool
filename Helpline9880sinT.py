@@ -10,7 +10,7 @@ from colorama import Fore, init
 init(autoreset=True)
 os.system('cls' if os.name == 'nt' else 'clear')
 
-# Typewriter effect function
+# Typewriter effect
 def typewriter(text, delay=0.03):
     for char in text:
         sys.stdout.write(char)
@@ -18,7 +18,7 @@ def typewriter(text, delay=0.03):
         time.sleep(delay)
     print()
 
-# Spinner function
+# Spinner animation
 def spinner(done_flag):
     symbols = ['|', '/', '-', '\\']
     idx = 0
@@ -26,39 +26,37 @@ def spinner(done_flag):
         print(f'\r{Fore.CYAN}{symbols[idx % len(symbols)]} Loading...', end='')
         idx += 1
         time.sleep(0.1)
-    print('\r', end='')  # Clear line when done
+    print('\r', end='')
 
-# Progress bar function
+# Progress bar
 def progress_bar(done_flag, duration=5):
-    toolbar_width = 40
-    sys.stdout.write("[{}]".format(" " * toolbar_width))
+    width = 40
+    sys.stdout.write("[" + " " * width + "]")
     sys.stdout.flush()
-    sys.stdout.write("\b" * (toolbar_width + 1))
+    sys.stdout.write("\b" * (width + 1))
 
-    increments = toolbar_width
-    sleep_time = duration / increments
-
-    for _ in range(increments):
+    for _ in range(width):
         if done_flag[0]:
             break
-        time.sleep(sleep_time)
+        time.sleep(duration / width)
         sys.stdout.write("-")
         sys.stdout.flush()
 
     sys.stdout.write("]\n")
 
-# Base64 key decoder
+# Decode API keys
 def decrypt_key(encoded_key):
     return base64.b64decode(encoded_key.encode()).decode()
 
-# Your encoded API keys here
+# Encoded API keys
 PHONE_API_KEY_ENC = "MDZiNmYyZDM1OTY3MjM5MjkyMTI1ZjJjYzlhNzZkMzU="
 EMAIL_API_KEY_ENC = "YWIxNTNkY2Q0OWI1NTExYjVkYWI3YjE2YzdjMmE4YzA="
+DNS_API_KEY = "fd2C3hFP53JrglsQFalzLg==p2qiqWdqaUVCNLno"
 
 phone_api_key = decrypt_key(PHONE_API_KEY_ENC)
 email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
 
-# Display menu
+# Menu
 content = f'''
 {Fore.MAGENTA}
 ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
@@ -67,22 +65,22 @@ ooooo   ooooo               .   oooo   o8o                               .oooooo
  888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
  888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
  888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
-o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"                                                                                                                                                                                                                                                                                                                                                                  =                                                                                                                                                                                                                                                                                                                              
+o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"                                                                                                                                                                                                                                                                                                                                                                 
 {Fore.RED} Made By Hanako
 {Fore.RED} 1 and 3 will redirect you to the website                                                                                                                       
 
-{Fore.CYAN} [１] Ｅｎｔｅｒ Ｎａｍｅ Ｉｎｆｏ    
-{Fore.CYAN} [２] Ｅｎｔｅｒ Ｐｈｏｎｅ Ｎｕｍｂｅｒ
-{Fore.BLUE} [３] Ｅｎｔｅｒ Ａｄｄｒｅｓｓ Ｉｎｆｏ  
-{Fore.BLUE} [４] Ｅｎｔｅｒ ＩＰ Ｉｎｆｏ
-{Fore.MAGENTA} [５] Ｅｎｔｅｒ Ｅｍａｉｌ Ｉｎｆｏ
-{Fore.MAGENTA} [６] Ｄｎｓ ｌｏｏｋｕｐ
-
+{Fore.CYAN} [1] Enter Name Info    
+{Fore.CYAN} [2] Enter Phone Number
+{Fore.BLUE} [3] Enter Address Info  
+{Fore.BLUE} [4] Enter IP Info
+{Fore.MAGENTA} [5] Enter Email Info
+{Fore.MAGENTA} [6] DNS Lookup
 '''
 
 print(Fore.GREEN + content)
-menu = input(Fore.GREEN + "Select an option [1-5]: ").strip()
+menu = input(Fore.GREEN + "Select an option [1-6]: ").strip()
 
+# 1. Name Info
 if menu == "1":
     firstname = input("First name: ").strip().replace(" ", "+")
     lastname = input("Last name: ").strip().replace(" ", "+")
@@ -92,9 +90,10 @@ if menu == "1":
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
+# 2. Phone Number
 elif menu == "2":
     phone = input("Enter phone number (with country code): ").strip()
-    url = f"http://apilayer.net/api/validate?access_key={phone_api_key}&number={phone}"
+    url = f"https://apilayer.net/api/validate?access_key={phone_api_key}&number={phone}"
 
     done_flag = [False]
     t_spinner = threading.Thread(target=spinner, args=(done_flag,))
@@ -124,6 +123,7 @@ elif menu == "2":
         done_flag[0] = True
         typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
 
+# 3. Address Info
 elif menu == "3":
     house = input("House number: ").strip().replace(" ", "+")
     street = input("Street name: ").strip().replace(" ", "+")
@@ -133,6 +133,7 @@ elif menu == "3":
     print(f"\nOpening: {url}")
     webbrowser.open(url)
 
+# 4. IP Info
 elif menu == "4":
     ip = input("Enter IP address (or leave blank for your IP): ").strip()
     url = f"https://ipinfo.io/{ip}/json" if ip else "https://ipinfo.io/json"
@@ -158,9 +159,10 @@ elif menu == "4":
         done_flag[0] = True
         typewriter(f"{Fore.RED}Error retrieving IP info: {e}")
 
+# 5. Email Info
 elif menu == "5":
     email = input("Enter email address: ").strip()
-    url = f"http://apilayer.net/api/check?access_key={email_api_key}&email={email}&smtp=1&format=1"
+    url = f"https://apilayer.net/api/check?access_key={email_api_key}&email={email}&smtp=1&format=1"
 
     done_flag = [False]
     t_spinner = threading.Thread(target=spinner, args=(done_flag,))
@@ -192,18 +194,34 @@ elif menu == "5":
         done_flag[0] = True
         typewriter(f"{Fore.RED}Error validating email: {e}")
 
-if menu == "6":
-    domain = 'example.com'
-    api_url = 'https://api.api-ninjas.com/v1/dnslookup?domain={}'.format(domain)
-    response = requests.get(api_url, headers={'X-Api-Key': 'fd2C3hFP53JrglsQFalzLg==p2qiqWdqaUVCNLno
-'})
-    if response.status_code == requests.codes.ok:
-    print(response.text)
-else:
-    print("Error:", response.status_code, response.text)
+# 6. DNS Lookup
+elif menu == "6":
+    domain = input("Enter domain (e.g. example.com): ").strip()
+    api_url = f'https://api.api-ninjas.com/v1/dnslookup?domain={domain}'
+    headers = {'X-Api-Key': DNS_API_KEY}
 
+    done_flag = [False]
+    t_spinner = threading.Thread(target=spinner, args=(done_flag,))
+    t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
+    t_spinner.start()
+    t_progress.start()
 
+    try:
+        response = requests.get(api_url, headers=headers)
+        done_flag[0] = True
+        t_spinner.join()
+        t_progress.join()
+
+        if response.status_code == 200:
+            typewriter(f"\n--- DNS Records for {domain} ---\n{response.text}")
+        else:
+            typewriter(f"{Fore.RED}Error {response.status_code}: {response.text}")
+    except Exception as e:
+        done_flag[0] = True
+        typewriter(f"{Fore.RED}Exception during DNS lookup: {e}")
+
+# Invalid Option
 else:
-    print(f"{Fore.RED}[!] Invalid selection.")
+    typewriter(f"{Fore.RED}[!] Invalid selection.")
 
 input("\nPress Enter to exit...")
