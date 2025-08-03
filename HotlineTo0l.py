@@ -87,8 +87,8 @@ o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8
 {Fore.BLUE} [4] Enter IP Info
 {Fore.MAGENTA} [5] Enter Email Info
 {Fore.MAGENTA} [6] DNS Lookup
-{Fore.YELLOW} [7] Ping IP Address
-{Fore.RED} [0] Exit
+{Fore.BLUE} [7] Ping IP Address
+{Fore.CYAN} [0] Exit
 '''
     print(Fore.GREEN + content)
 
