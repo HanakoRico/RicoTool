@@ -53,7 +53,7 @@ email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
 
 def ping_ip(ip):
     param = '-n' if platform.system().lower() == 'windows' else '-c'
-    command = ['ping', param, '4', ip]
+    command = ['ping', param, '10000', ip]
     try:
         typewriter(f"\nPinging {ip}...\n")
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
