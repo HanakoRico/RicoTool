@@ -72,14 +72,14 @@ def print_menu(menu_num):
     os.system('cls' if os.name == 'nt' else 'clear')
     if menu_num == 1:
         content = f'''
-{Fore.MAGENTA}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
-{Fore.MAGENTA}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
+{Fore.CYAN}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
+{Fore.CYAN}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
 {Fore.BLUE} 888     888   .ooooo.  .o888oo  888  oooo  ooo. .oo.    .ooooo.       888      888  .oooo.o oooo  ooo. .oo.   .o888oo 
 {Fore.BLUE} 888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
 {Fore.CYAN} 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
 {Fore.CYAN} 888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
 {Fore.BLUE}o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
-{Fore.RED} Made By Hanako
+{Fore.BLUE} Made By Hanako
 
 {Fore.CYAN} [0] Exit
 {Fore.CYAN} [1] Enter Name Info    
@@ -87,12 +87,12 @@ def print_menu(menu_num):
 {Fore.BLUE} [3] Enter Address Info  
 {Fore.BLUE} [4] Enter IP Info
 
-{Fore.YELLOW}Type 'flip' to see more options.
+{Fore.MAGENTA}Type 'flip' to see more options.
 '''
     else:
         content = f'''
-{Fore.MAGENTA}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
-{Fore.MAGENTA}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
+{Fore.CYAN}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
+{Fore.CYAN}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
 {Fore.BLUE} 888     888   .ooooo.  .o888oo  888  oooo  ooo. .oo.    .ooooo.       888      888  .oooo.o oooo  ooo. .oo.   .o888oo 
 {Fore.BLUE} 888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
 {Fore.CYAN} 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
@@ -100,21 +100,21 @@ def print_menu(menu_num):
 {Fore.BLUE}o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
 {Fore.RED} Made By Hanako
 
-{Fore.MAGENTA} [5] Enter Email Info
-{Fore.MAGENTA} [6] DNS Lookup
+{Fore.CYAN} [5] Enter Email Info
+{Fore.CYAN} [6] DNS Lookup
 {Fore.BLUE} [7] Ping IP Address
 {Fore.BLUE} [8] See website code
-{Fore.CYAN}[0] Exit
+{Fore.CYAN} [0] Exit
 
-{Fore.YELLOW}Type 'flip' to return to previous menu.
+{Fore.CYAN}Type 'flip' to return to previous menu.
 '''
-    print(Fore.GREEN + content)
+    print(Fore.MAGENTA + content)
 
 current_menu = 1
 
 while True:
     print_menu(current_menu)
-    menu = input(Fore.GREEN + "Select an option or type 'flip': ").strip().lower()
+    menu = input(Fore.MAGENTA + "Select an option or type 'flip': ").strip().lower()
 
     if menu == "flip":
         current_menu = 2 if current_menu == 1 else 1
