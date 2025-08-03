@@ -86,8 +86,6 @@ def print_menu(menu_num):
 {Fore.CYAN} [2] Enter Phone Number
 {Fore.BLUE} [3] Enter Address Info  
 {Fore.BLUE} [4] Enter IP Info
-
-{Fore.MAGENTA}Type 'flip' to see more options.
 '''
     else:
         content = f'''
@@ -98,15 +96,13 @@ def print_menu(menu_num):
 {Fore.CYAN} 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
 {Fore.CYAN} 888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
 {Fore.BLUE}o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
-{Fore.RED} Made By Hanako
+{Fore.BLUE} Made By Hanako
 
 {Fore.CYAN} [5] Enter Email Info
 {Fore.CYAN} [6] DNS Lookup
 {Fore.BLUE} [7] Ping IP Address
 {Fore.BLUE} [8] See website code
 {Fore.CYAN} [0] Exit
-
-{Fore.CYAN}Type 'flip' to return to previous menu.
 '''
     print(Fore.MAGENTA + content)
 
