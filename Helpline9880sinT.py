@@ -57,6 +57,7 @@ EMAIL_API_KEY_ENC = "YWIxNTNkY2Q0OWI1NTExYjVkYWI3YjE2YzdjMmE4YzA="
 
 phone_api_key = decrypt_key(PHONE_API_KEY_ENC)
 email_api_key = decrypt_key(EMAIL_API_KEY_ENC)
+dns_api_key = decrypt_key(
 
 # Display menu
 content = f'''
@@ -67,16 +68,16 @@ ooooo   ooooo               .   oooo   o8o                               .oooooo
  888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
  888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
  888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
-o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888" 
-                                                                                                                                                                                                                                                                                                                                                                 =                                                                                                                                                                                                                                                                                                                              
+o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"                                                                                                                                                                                                                                                                                                                                                                  =                                                                                                                                                                                                                                                                                                                              
 {Fore.RED} Made By Hanako
 {Fore.RED} 1 and 3 will redirect you to the website                                                                                                                       
 
 {Fore.CYAN} [１] Ｅｎｔｅｒ Ｎａｍｅ Ｉｎｆｏ    
-{Fore.BLUE} [２] Ｅｎｔｅｒ Ｐｈｏｎｅ Ｎｕｍｂｅｒ
-{Fore.MAGENTA} [３] Ｅｎｔｅｒ Ａｄｄｒｅｓｓ Ｉｎｆｏ  
+{Fore.CYAN} [２] Ｅｎｔｅｒ Ｐｈｏｎｅ Ｎｕｍｂｅｒ
+{Fore.BLUE} [３] Ｅｎｔｅｒ Ａｄｄｒｅｓｓ Ｉｎｆｏ  
 {Fore.BLUE} [４] Ｅｎｔｅｒ ＩＰ Ｉｎｆｏ
-{Fore.CYAN} [５] Ｅｎｔｅｒ Ｅｍａｉｌ Ｉｎｆｏ
+{Fore.MAGENTA} [５] Ｅｎｔｅｒ Ｅｍａｉｌ Ｉｎｆｏ
+{Fore.MAGENTA} [６] Ｄｎｓ ｌｏｏｋｕｐ
 
 '''
 
@@ -191,6 +192,17 @@ elif menu == "5":
     except Exception as e:
         done_flag[0] = True
         typewriter(f"{Fore.RED}Error validating email: {e}")
+
+if menu == "6":
+    domain = 'example.com'
+    api_url = 'https://api.api-ninjas.com/v1/dnslookup?domain={}'.format(domain)
+    response = requests.get(api_url, headers={'X-Api-Key': 'fd2C3hFP53JrglsQFalzLg==p2qiqWdqaUVCNLno
+'})
+    if response.status_code == requests.codes.ok:
+    print(response.text)
+else:
+    print("Error:", response.status_code, response.text)
+
 
 else:
     print(f"{Fore.RED}[!] Invalid selection.")
