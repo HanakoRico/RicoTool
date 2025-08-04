@@ -83,9 +83,9 @@ def print_menu(menu_num):
 
 {Fore.CYAN} [0] Exit
 {Fore.CYAN} [1] Enter Name Info    
-{Fore.CYAN} [2] Enter Phone Number
+{Fore.BLUE} [2] Enter Phone Number
 {Fore.BLUE} [3] Enter Address Info  
-{Fore.BLUE} [4] Enter IP Info
+{Fore.CYAN} [4] Enter IP Info
 '''
     else:
         content = f'''
@@ -100,9 +100,9 @@ def print_menu(menu_num):
 
 {Fore.CYAN} [5] Enter Email Info
 {Fore.CYAN} [6] DNS Lookup
-{Fore.BLUE} [7] Ping IP Address
+{Fore.BLUE} [7] Ping IP
 {Fore.BLUE} [8] See website code
-{Fore.CYAN} [0] Exit
+{Fore.CYAN} [9] Join The Discord
 '''
     print(Fore.MAGENTA + content)
 
@@ -110,9 +110,9 @@ current_menu = 1
 
 while True:
     print_menu(current_menu)
-    menu = input(Fore.MAGENTA + "Select an option or type 'flip': ").strip().lower()
+    menu = input(Fore.MAGENTA + "Select an option or type 'Next': ").strip().lower()
 
-    if menu == "flip":
+    if menu == "Next":
         current_menu = 2 if current_menu == 1 else 1
         continue
 
@@ -248,6 +248,12 @@ while True:
 
         elif menu == "8":
             url = "https://www.view-page-source.com/"
+            print(f"\nOpening: {url}")
+            webbrowser.open(url)
+
+
+        elif menu == "9":
+            url = "https://discord.gg/tjdgK3pF"
             print(f"\nOpening: {url}")
             webbrowser.open(url)
 
