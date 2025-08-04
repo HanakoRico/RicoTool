@@ -104,13 +104,13 @@ def print_menu(menu_num):
 {Fore.BLUE} [8] See website code
 {Fore.CYAN} [9] Join The Discord
 '''
-    print(Fore.MAGENTA + content)
+    print(Fore.CYAN + content)
 
 current_menu = 1
 
 while True:
     print_menu(current_menu)
-    menu = input(Fore.MAGENTA + "Select an option or type 'Next': ").strip().lower()
+    menu = input(Fore.CYAN + "Select an option or type 'Next': ").strip().lower()
 
     if menu == "Next":
         current_menu = 2 if current_menu == 1 else 1
