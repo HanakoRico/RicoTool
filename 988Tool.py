@@ -110,9 +110,9 @@ current_menu = 1
 
 while True:
     print_menu(current_menu)
-    menu = input(Fore.CYAN + "Select an option or type 'Next': ").strip().lower()
+    menu = input(Fore.CYAN + "Select an option or type 'flip': ").strip().lower()
 
-    if menu == "Next":
+    if menu == "flip":
         current_menu = 2 if current_menu == 1 else 1
         continue
 
