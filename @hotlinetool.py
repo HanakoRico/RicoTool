@@ -130,25 +130,22 @@ while True:
     print_menu(current_menu)
     menu = input(Fore.CYAN + "Select an option or type 'next or back': ").strip().lower()
 
-if menu == "next":
-    if current_menu == 1:
-        current_menu = 2
-    elif current_menu == 2:
-        current_menu = 3
-    continue
+    if menu == "next":
+        if current_menu == 1:
+            current_menu = 2
+        elif current_menu == 2:
+            current_menu = 3
+        continue
 
-if menu == "back":
-    if current_menu == 3:
-        current_menu = 2
-    elif current_menu == 2:
-        current_menu = 1
-    continue
-
+    if menu == "back":
+        if current_menu == 3:
+            current_menu = 2
+        elif current_menu == 2:
+            current_menu = 1
+        continue
 
     if menu == "0":
-        typewriter(f"{Fore.YELLOW}Exiting...")
         break
-
     if current_menu == 1:
         if menu == "1":
             url = f"https://www.beenverified.com"
