@@ -87,7 +87,7 @@ def print_menu(menu_num):
 {Fore.BLUE} [3] Enter Address Info  
 {Fore.CYAN} [4] Enter IP Info
 '''
-    else:
+    if menu_num == 2:
         content = f'''
 {Fore.CYAN}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
 {Fore.CYAN}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
@@ -104,17 +104,46 @@ def print_menu(menu_num):
 {Fore.BLUE} [8] See website code
 {Fore.CYAN} [9] Join The Discord
 '''
+    if menu_num == 3:
+        content = f'''
+{Fore.CYAN}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
+{Fore.CYAN}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
+{Fore.BLUE} 888     888   .ooooo.  .o888oo  888  oooo  ooo. .oo.    .ooooo.       888      888  .oooo.o oooo  ooo. .oo.   .o888oo 
+{Fore.BLUE} 888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
+{Fore.CYAN} 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
+{Fore.CYAN} 888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
+{Fore.BLUE}o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
+{Fore.BLUE} Made By Hanako
+
+{Fore.CYAN} [10] Unknown
+{Fore.CYAN} [11] Unknown
+{Fore.BLUE} [12] Unknown
+{Fore.BLUE} [13] Unknown
+{Fore.CYAN} [14] Unknown
+'''
+
     print(Fore.CYAN + content)
 
 current_menu = 1
 
 while True:
     print_menu(current_menu)
-    menu = input(Fore.CYAN + "Select an option or type 'flip': ").strip().lower()
+    menu = input(Fore.CYAN + "Select an option or type 'next or back': ").strip().lower()
 
-    if menu == "flip":
-        current_menu = 2 if current_menu == 1 else 1
-        continue
+if menu == "next":
+    if current_menu == 1:
+        current_menu = 2
+    elif current_menu == 2:
+        current_menu = 3
+    continue
+
+if menu == "back":
+    if current_menu == 3:
+        current_menu = 2
+    elif current_menu == 2:
+        current_menu = 1
+    continue
+
 
     if menu == "0":
         typewriter(f"{Fore.YELLOW}Exiting...")
