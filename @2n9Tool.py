@@ -192,7 +192,7 @@ while True:
                 done_flag[0] = True
                 typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
 
-                elif menu == "3":
+        elif menu == "3":
             street = input("Enter street line (e.g., 1818 Fair Oaks Ave): ").strip()
             city = input("Enter city: ").strip()
             state = input("Enter state code (e.g., CA): ").strip()
