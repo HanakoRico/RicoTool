@@ -79,7 +79,7 @@ def print_menu(menu_num):
 {Fore.CYAN}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
 {Fore.CYAN} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
 {Fore.BLUE}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
-{Fore.BLUE} Made By Hanako  
+{Fore.BLUE} Osint  0 MADE BY HANAKO 0
 
 {Fore.CYAN} [0] Exit
 {Fore.CYAN} [1] Enter Name Info    
@@ -96,7 +96,7 @@ def print_menu(menu_num):
 {Fore.CYAN}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
 {Fore.CYAN} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
 {Fore.BLUE}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
-{Fore.BLUE} Made By Hanako  
+{Fore.BLUE} Osint/Discord/Website Code  0 MADE BY HANAKO 0
 
 {Fore.CYAN} [5] Enter Email Info
 {Fore.CYAN} [6] DNS Lookup
@@ -113,13 +113,13 @@ def print_menu(menu_num):
 {Fore.CYAN}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
 {Fore.CYAN} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
 {Fore.BLUE}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
-{Fore.BLUE} Made By Hanako  
+{Fore.BLUE} Swatting Methods/Secure emails  0 MADE BY HANAKO 0
 
-{Fore.CYAN} [10] Unknown
-{Fore.CYAN} [11] Unknown
-{Fore.BLUE} [12] Unknown
-{Fore.BLUE} [13] Unknown
-{Fore.CYAN} [14] Unknown
+{Fore.CYAN} [10] Globfone (Free)
+{Fore.CYAN} [11] Set Up GV (Paid But Better)
+{Fore.BLUE} [12] 988 suicide Hotline (Free + May get them sent to a mental hospital)
+{Fore.BLUE} [13] @Mailum.com
+{Fore.CYAN} [14] @Proton.me
 '''
 
     print(Fore.CYAN + content)
@@ -282,6 +282,27 @@ while True:
             url = "https://discord.gg/tjdgK3pF"
             print(f"\nOpening: {url}")
             webbrowser.open(url)
+
+        elif menu == "10":
+            url = "https://globfone.com/
+            print(f"\nOpening: {url}")
+            webbrowser.open(url)
+
+        elif menu == "11"
+            url = "https://voice.google.com/signup"
+            print(f"nOpening: {url}")
+            webbrowser.open(url)
+
+        elif menu == "12"
+            url = "hhttps://mailum.com/"
+            print(f"nOpening: {url}")
+            webbrowser.open(url)
+
+        elif menu == "13"
+            url = "https://account.proton.me/mail/signup?ref=mailhero"
+            print(f"nOpening: {url}")
+            webbrowser.open(url)
+
 
         else:
             typewriter(f"{Fore.RED}[!] Invalid selection.")
