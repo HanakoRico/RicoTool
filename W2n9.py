@@ -288,17 +288,17 @@ while True:
             print(f"\nOpening: {url}")
             webbrowser.open(url)
 
-        elif menu == "11"
+        elif menu == "11":
             url = "https://voice.google.com/signup"
             print(f"nOpening: {url}")
             webbrowser.open(url)
 
-        elif menu == "12"
+        elif menu == "12":
             url = "hhttps://mailum.com/"
             print(f"nOpening: {url}")
             webbrowser.open(url)
 
-        elif menu == "13"
+        elif menu == "13":
             url = "https://account.proton.me/mail/signup?ref=mailhero"
             print(f"nOpening: {url}")
             webbrowser.open(url)
