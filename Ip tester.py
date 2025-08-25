@@ -60,8 +60,6 @@ def ping_worker(command, ip):
         for line in iter(process.stdout.readline, ''):
             if line.strip():
                 print(f"{Fore.GREEN}Pinged IP = {ip} | {line.strip()}", flush=True)
-        process.stdout.close()
-        process.wait()
     except Exception as e:
         print(f"{Fore.RED}Ping error for {ip}: {e}")
 
