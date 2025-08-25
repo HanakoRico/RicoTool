@@ -72,20 +72,20 @@ def print_menu(menu_num):
     os.system('cls' if os.name == 'nt' else 'clear')
     if menu_num == 1:
         content = f'''
-{Fore.CYAN}  .oooooo.    .oooo.                .ooooo.        ooooooooooooo                     oooo  
-{Fore.CYAN} d'     `b  .dP""Y88b              888' `Y88.      8'   888   `8                     `888  
-{Fore.BLUE}d' .d"bd  8       ]8P' ooo. .oo.   888    888           888       .ooooo.   .ooooo.   888  
-{Fore.BLUE}8  8. 8  .d     .d8P'  `888P"Y88b   `Vbood888           888      d88' `88b d88' `88b  888  
-{Fore.CYAN}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
-{Fore.CYAN} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
-{Fore.BLUE}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
-{Fore.BLUE} Made By Hanako  
+{Fore.RED}  .oooooo.    .oooo.                .ooooo.        ooooooooooooo                     oooo  
+{Fore.RED} d'     `b  .dP""Y88b              888' `Y88.      8'   888   `8                     `888  
+{Fore.MAGENTA}d' .d"bd  8       ]8P' ooo. .oo.   888    888           888       .ooooo.   .ooooo.   888  
+{Fore.MAGENTA}8  8. 8  .d     .d8P'  `888P"Y88b   `Vbood888           888      d88' `88b d88' `88b  888  
+{Fore.BLUE}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
+{Fore.BLUE} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
+{Fore.CYAN}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
+{Fore.CYAN} Made By Hanako  
 
-{Fore.CYAN} [0] Exit
-{Fore.CYAN} [1] Enter Name Info    
-{Fore.BLUE} [2] Enter Phone Number
-{Fore.BLUE} [3] Enter Address Info  
-{Fore.CYAN} [4] Enter IP Info
+{Fore.GREEN} [0] Exit
+{Fore.GREEN} [1] Enter Name Info    
+{Fore.YELLOW} [2] Enter Phone Number
+{Fore.YELLOW} [3] Enter Address Info  
+{Fore.WHITE} [4] Enter IP Info
 '''
     if menu_num == 2:
         content = f'''
