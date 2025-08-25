@@ -70,45 +70,45 @@ def ping_ip(ip):
 
 def print_menu(menu_num):
     os.system('cls' if os.name == 'nt' else 'clear')
-    ascii_art = f'''
+    banner = f'''
 {Fore.CYAN}  ,ad88PPP88ba,      ad888888b,                  ad88888ba                                        88  
 {Fore.CYAN} d8"  .ama.a "8a  d8"     "88             d8"     "88     ,d                              88  
 {Fore.BLUE}d8'  ,8P"88"  88          a8P               8P       88       88                              88  
 {Fore.BLUE}88  .8P  8P   88       ,d8P"   8b,dPPYba,   Y8,    ,d88     MM88MMM  ,adPPYba,    ,adPPYba,   88  
-{Fore.CYAN}88  88   8'   8P     a8P"     88P'   `"8a   "PPPPPP"88      88    a8"     "8a  a8"     "8a  88  
+{Fore.CYAN}88  88   8'   8P     a8P"     88P'   `"8a "PPPPPP"88      88    a8"     "8a a8"     "8a  88  
 {Fore.CYAN}88  8B ,d8 ,ad8'   a8P'        88       88           8P       88    8b       d8  8b       d8  88  
-{Fore.BLUE}"8a "88P"888P" d8"        88       88  8b,    a8P        88,   "8a,   ,a8"  "8a,   ,a8"  88  
-{Fore.BLUE} `Y8aaaaaaaad8P   88888888888  88       88  `"Y8888P'         "Y888  `"YbbdP"'    `"YbbdP"'   88  
-{Fore.CYAN}    """""""""                                                                                    
-{Fore.CYAN}                                                                                                
+{Fore.BLUE}"8a "88P"888P" d8"        88       88  8b,    a8P        88,   "8a,   ,a8""8a,   ,a8"  88  
+{Fore.BLUE} `Y8aaaaaaaad8P   88888888888  88       88  `"Y8888P'         "Y888  `"YbbdP"' `"YbbdP"'   88  
+{Fore.CYAN}                                                                                            
 {Fore.BLUE} Made By Hanako
 '''
-    print(ascii_art)
-    
+    print(banner)
+
     if menu_num == 1:
-        print(f'''
+        menu_content = f'''
 {Fore.CYAN} [0] Exit
 {Fore.CYAN} [1] Enter Name Info    
 {Fore.BLUE} [2] Enter Phone Number
 {Fore.BLUE} [3] Enter Address Info  
 {Fore.CYAN} [4] Enter IP Info
-''')
+'''
     elif menu_num == 2:
-        print(f'''
+        menu_content = f'''
 {Fore.CYAN} [5] Enter Email Info
 {Fore.CYAN} [6] DNS Lookup
 {Fore.BLUE} [7] Ping IP
 {Fore.BLUE} [8] See website code
 {Fore.CYAN} [9] Join The Discord
-''')
+'''
     elif menu_num == 3:
-        print(f'''
+        menu_content = f'''
 {Fore.CYAN} [10] Unknown
 {Fore.CYAN} [11] Unknown
 {Fore.BLUE} [12] Unknown
 {Fore.BLUE} [13] Unknown
 {Fore.CYAN} [14] Unknown
-''')
+'''
+    print(menu_content)
 
 current_menu = 1
 
@@ -117,17 +117,16 @@ while True:
     menu = input(Fore.CYAN + "Select an option or type 'next or back': ").strip().lower()
 
     if menu == "next":
-        if current_menu < 3:
-            current_menu += 1
+        current_menu = min(current_menu + 1, 3)
         continue
+
     if menu == "back":
-        if current_menu > 1:
-            current_menu -= 1
+        current_menu = max(current_menu - 1, 1)
         continue
+
     if menu == "0":
         break
 
-    # Menu 1 options
     if current_menu == 1:
         if menu == "1":
             url = "https://www.beenverified.com"
@@ -164,36 +163,49 @@ while True:
                 typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
 
         elif menu == "3":
-            street = input("Enter street line (e.g., 1818 Fair Oaks Ave): ").strip()
+            # --- Global Address API Integration ---
+            street = input("Enter street line (e.g., Gießener Str. 30): ").strip()
             city = input("Enter city: ").strip()
-            state = input("Enter state code (e.g., CA): ").strip()
+            country = input("Enter country code (e.g., DEU): ").strip()
             postal = input("Enter postal code: ").strip()
-            url = "https://global-address.p.rapidapi.com/V3/WEB/GlobalAddress/doGlobalAddress?format=json&ctry=DEU&a1=Gie%C3%9Fener%20Str.%2030&DeliveryLines=Off&a2=Frankfurt%20am%20Main&postal=60435"
+
+            url = "https://global-address.p.rapidapi.com/V3/WEB/GlobalAddress/doGlobalAddress"
+
             querystring = {
-                "primary.address_street_line1": street,
-                "primary.address_city": city,
-                "primary.address_state_code": state,
-                "primary.address_postal_code": postal
+                "format": "json",
+                "ctry": country,
+                "a1": street,
+                "a2": city,
+                "postal": postal,
+                "DeliveryLines": "Off"
             }
+
             headers = {
-                "X-RapidAPI-Key": os.getenv("8caa5b6988msh96637e37a7d9659p1d4024jsna618c6d0e04c"),
-                "X-RapidAPI-Host": "global-address.p.rapidapi.com"
+                "x-rapidapi-key": "8caa5b6988msh96637e37a7d9659p1d4024jsna618c6d0e04c",
+                "x-rapidapi-host": "global-address.p.rapidapi.com"
             }
+
             done_flag = [False]
             t_spinner = threading.Thread(target=spinner, args=(done_flag,))
             t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
             t_spinner.start()
             t_progress.start()
+
             try:
                 response = requests.get(url, headers=headers, params=querystring)
                 done_flag[0] = True
                 t_spinner.join()
                 t_progress.join()
                 data = response.json()
-                output = "\n--- Reverse Address Info ---\n"
-                for key, value in data.items():
-                    output += f"{key}: {value}\n"
+
+                output = "\n--- Address Lookup Info ---\n"
+                for item in data.get("Addresses", []):
+                    for key, value in item.items():
+                        output += f"{key}: {value}\n"
+                    output += "-"*30 + "\n"
+
                 typewriter(output)
+
             except Exception as e:
                 done_flag[0] = True
                 typewriter(f"{Fore.RED}Error retrieving address info: {e}")
@@ -223,8 +235,7 @@ while True:
         else:
             typewriter(f"{Fore.RED}[!] Invalid selection.")
 
-    # Menu 2 options
-    elif current_menu == 2:
+    else:  # menu 2 options 5-9
         if menu == "5":
             email = input("Enter email address: ").strip()
             url = f"https://apilayer.net/api/check?access_key={email_api_key}&email={email}&smtp=1&format=1"
