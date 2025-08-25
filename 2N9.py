@@ -284,7 +284,7 @@ while True:
             webbrowser.open(url)
 
         elif menu == "10":
-            url = "https://globfone.com/
+            url = "https://globfone.com/"
             print(f"\nOpening: {url}")
             webbrowser.open(url)
 
