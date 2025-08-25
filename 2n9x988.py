@@ -168,7 +168,7 @@ while True:
             city = input("Enter city: ").strip()
             state = input("Enter state code (e.g., CA): ").strip()
             postal = input("Enter postal code: ").strip()
-            url = "https://whitepages-fraud-check.p.rapidapi.com/reverse-address"
+            url = "https://global-address.p.rapidapi.com/V3/WEB/GlobalAddress/doGlobalAddress?format=json&ctry=DEU&a1=Gie%C3%9Fener%20Str.%2030&DeliveryLines=Off&a2=Frankfurt%20am%20Main&postal=60435"
             querystring = {
                 "primary.address_street_line1": street,
                 "primary.address_city": city,
@@ -176,8 +176,8 @@ while True:
                 "primary.address_postal_code": postal
             }
             headers = {
-                "X-RapidAPI-Key": os.getenv("RAPIDAPI_KEY"),
-                "X-RapidAPI-Host": "whitepages-fraud-check.p.rapidapi.com"
+                "X-RapidAPI-Key": os.getenv("8caa5b6988msh96637e37a7d9659p1d4024jsna618c6d0e04c"),
+                "X-RapidAPI-Host": "global-address.p.rapidapi.com"
             }
             done_flag = [False]
             t_spinner = threading.Thread(target=spinner, args=(done_flag,))
