@@ -59,11 +59,19 @@ def ping_worker(command, ip):
         )
         for line in iter(process.stdout.readline, ''):
             if line.strip():
-                print(f"{Fore.GREEN}Pinged IP = {ip} | {line.strip()}", flush=True)
+                if "time=" in line:  # Successful ping
+                    print(f"{Fore.RED}[SUCCESS] {ip} -> {line.strip()}")
+                elif "Request timed out" in line:
+                    print(f"{Fore.YELLOW}[TIMEOUT] {ip} -> Request timed out")
+                elif "General failure" in line:
+                    print(f"{Fore.RED}[FAIL] {ip} -> General failure")
+                else:
+                    print(f"{Fore.CYAN}[INFO] {ip} -> {line.strip()}")
         process.stdout.close()
         process.wait()
     except Exception as e:
-        print(f"{Fore.RED}Ping error for {ip}: {e}")
+        print(f"{Fore.RED}[ERROR] Ping error for {ip}: {e}")
+
 
 def ping_ip(ip, threads=4):
     system = platform.system().lower()
