@@ -72,14 +72,14 @@ def print_menu(menu_num):
     os.system('cls' if os.name == 'nt' else 'clear')
     if menu_num == 1:
         content = f'''
-{Fore.CYAN}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
-{Fore.CYAN}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
-{Fore.BLUE} 888     888   .ooooo.  .o888oo  888  oooo  ooo. .oo.    .ooooo.       888      888  .oooo.o oooo  ooo. .oo.   .o888oo 
-{Fore.BLUE} 888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
-{Fore.CYAN} 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
-{Fore.CYAN} 888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
-{Fore.BLUE}o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
-{Fore.BLUE} Made By Hanako
+{Fore.CYAN}  .oooooo.    .oooo.                .ooooo.        ooooooooooooo                     oooo  
+{Fore.CYAN} d'     `b  .dP""Y88b              888' `Y88.      8'   888   `8                     `888  
+{Fore.BLUE}d' .d"bd  8       ]8P' ooo. .oo.   888    888           888       .ooooo.   .ooooo.   888  
+{Fore.BLUE}8  8. 8  .d     .d8P'  `888P"Y88b   `Vbood888           888      d88' `88b d88' `88b  888  
+{Fore.CYAN}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
+{Fore.CYAN} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
+{Fore.BLUE}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
+{Fore.BLUE} Made By Hanako  
 
 {Fore.CYAN} [0] Exit
 {Fore.CYAN} [1] Enter Name Info    
@@ -89,14 +89,14 @@ def print_menu(menu_num):
 '''
     if menu_num == 2:
         content = f'''
-{Fore.CYAN}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
-{Fore.CYAN}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
-{Fore.BLUE} 888     888   .ooooo.  .o888oo  888  oooo  ooo. .oo.    .ooooo.       888      888  .oooo.o oooo  ooo. .oo.   .o888oo 
-{Fore.BLUE} 888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
-{Fore.CYAN} 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
-{Fore.CYAN} 888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
-{Fore.BLUE}o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
-{Fore.BLUE} Made By Hanako
+{Fore.CYAN}  .oooooo.    .oooo.                .ooooo.        ooooooooooooo                     oooo  
+{Fore.CYAN} d'     `b  .dP""Y88b              888' `Y88.      8'   888   `8                     `888  
+{Fore.BLUE}d' .d"bd  8       ]8P' ooo. .oo.   888    888           888       .ooooo.   .ooooo.   888  
+{Fore.BLUE}8  8. 8  .d     .d8P'  `888P"Y88b   `Vbood888           888      d88' `88b d88' `88b  888  
+{Fore.CYAN}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
+{Fore.CYAN} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
+{Fore.BLUE}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
+{Fore.BLUE} Made By Hanako  
 
 {Fore.CYAN} [5] Enter Email Info
 {Fore.CYAN} [6] DNS Lookup
@@ -106,14 +106,14 @@ def print_menu(menu_num):
 '''
     if menu_num == 3:
         content = f'''
-{Fore.CYAN}ooooo   ooooo               .   oooo   o8o                               .oooooo.             o8o                  .   
-{Fore.CYAN}`888'   `888'             .o8   `888   `"'                              d8P'  `Y8b            `"'                .o8   
-{Fore.BLUE} 888     888   .ooooo.  .o888oo  888  oooo  ooo. .oo.    .ooooo.       888      888  .oooo.o oooo  ooo. .oo.   .o888oo 
-{Fore.BLUE} 888ooooo888  d88' `88b   888    888  `888  `888P"Y88b  d88' `88b      888      888 d88(  "8 `888  `888P"Y88b    888   
-{Fore.CYAN} 888     888  888   888   888    888   888   888   888  888ooo888      888      888 `"Y88b.   888   888   888    888   
-{Fore.CYAN} 888     888  888   888   888 .  888   888   888   888  888    .o      `88b    d88' o.  )88b  888   888   888    888 . 
-{Fore.BLUE}o888o   o888o `Y8bod8P'   "888" o888o o888o o888o o888o `Y8bod8P'       `Y8bood8P'  8""888P' o888o o888o o888o   "888"
-{Fore.BLUE} Made By Hanako
+{Fore.CYAN}  .oooooo.    .oooo.                .ooooo.        ooooooooooooo                     oooo  
+{Fore.CYAN} d'     `b  .dP""Y88b              888' `Y88.      8'   888   `8                     `888  
+{Fore.BLUE}d' .d"bd  8       ]8P' ooo. .oo.   888    888           888       .ooooo.   .ooooo.   888  
+{Fore.BLUE}8  8. 8  .d     .d8P'  `888P"Y88b   `Vbood888           888      d88' `88b d88' `88b  888  
+{Fore.CYAN}Y.  YoP"b'    .dP'      888   888        888'           888      888   888 888   888  888
+{Fore.CYAN} 8.      .8 .oP     .o  888   888      .88P'            888      888   888 888   888  888     
+{Fore.BLUE}  YooooooP  8888888888 o888o o888o   .oP'              o888o     `Y8bod8P' `Y8bod8P' o888o 
+{Fore.BLUE} Made By Hanako  
 
 {Fore.CYAN} [10] Unknown
 {Fore.CYAN} [11] Unknown
