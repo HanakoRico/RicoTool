@@ -75,7 +75,7 @@ def ping_ip(ip, threads=4):
     else:
         param_count = '-c'
         param_size = '-s'
-        interval = ['-i', '0.1']  # Faster interval
+        interval = ['-i', '0.0001']  # Faster interval
         packet_size = '65500'
 
     command = ['ping', param_count, '100000', param_size, packet_size] + interval + [ip]
