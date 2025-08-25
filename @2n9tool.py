@@ -181,49 +181,10 @@ while True:
                 done_flag[0] = True
                 typewriter(f"{Fore.RED}Error retrieving phone info: {e}")
 
-                elif menu == "3":
-            street = input("Enter street line (e.g., 1818 Fair Oaks Ave): ").strip()
-            city = input("Enter city: ").strip()
-            state = input("Enter state code (e.g., CA): ").strip()
-            postal = input("Enter postal code: ").strip()
-
-            url = "https://whitepages-fraud-check.p.rapidapi.com/reverse-address"
-
-            querystring = {
-                "primary.address_street_line1": street,
-                "primary.address_city": city,
-                "primary.address_state_code": state,
-                "primary.address_postal_code": postal
-            }
-
-            headers = {
-                "X-RapidAPI-Key": os.getenv("RAPIDAPI_KEY"),  # safer than hardcoding!
-                "X-RapidAPI-Host": "whitepages-fraud-check.p.rapidapi.com"
-            }
-
-            done_flag = [False]
-            t_spinner = threading.Thread(target=spinner, args=(done_flag,))
-            t_progress = threading.Thread(target=progress_bar, args=(done_flag, 5))
-            t_spinner.start()
-            t_progress.start()
-            try:
-                response = requests.get(url, headers=headers, params=querystring)
-                done_flag[0] = True
-                t_spinner.join()
-                t_progress.join()
-                data = response.json()
-
-                # Pretty print the results
-                output = "\n--- Reverse Address Info ---\n"
-                for key, value in data.items():
-                    output += f"{key}: {value}\n"
-
-                typewriter(output)
-
-            except Exception as e:
-                done_flag[0] = True
-                typewriter(f"{Fore.RED}Error retrieving address info: {e}")
-
+        elif menu == "3":
+            url = f"https://www.whitepages.com/reverse-address"
+            print(f"\nOpening: {url}")
+            webbrowser.open(url)
 
         elif menu == "4":
             ip = input("Enter IP address (or leave blank for your IP): ").strip()
